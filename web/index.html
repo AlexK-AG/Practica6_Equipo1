@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b1015">
+  <title>Sector 07 · Archivo de operaciones</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="analytics.css">
+  <link rel="stylesheet" href="replay.css">
+  <link rel="stylesheet" href="sector-stats.css">
+  <script src="catalog.js" defer></script>
+  <script src="demo.js" defer></script>
+  <script src="equipment.js" defer></script>
+  <script src="analytics.js" defer></script>
+  <script src="replay.js" defer></script>
+  <script src="sector-stats.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <aside class="sidebar">
+    <a href="#overview" class="brand" aria-label="Sector 07, resumen"><span class="brand-mark">07<span></span></span><span>SECTOR 07<small>ARCHIVO DE OPERACIONES</small></span></a>
+    <div class="sidebar-label">CENTRO DE DATOS <span>01—07</span></div>
+    <nav aria-label="Secciones del archivo">
+      <a href="#overview" data-page="overview"><span class="nav-icon">◫</span> Resumen <small>01</small></a>
+      <a href="#players" data-page="players"><span class="nav-icon">◉</span> Jugadores <small>02</small></a>
+      <a href="#leaderboard" data-page="leaderboard"><span class="nav-icon">▥</span> Clasificación <small>03</small></a>
+      <a href="#history" data-page="history"><span class="nav-icon">◷</span> Historial <small>04</small></a>
+      <a href="#unlocks" data-page="unlocks"><span class="nav-icon">◇</span> Descubrimientos <small>05</small></a>
+      <a href="#events" data-page="events"><span class="nav-icon">≋</span> Registro de eventos <small>06</small></a>
+      <a href="#replays" data-page="replays"><span class="nav-icon">⌖</span> Partidas y recorridos <small>07</small></a>
+    </nav>
+    <div class="sidebar-bottom"><span class="eyebrow">CONTENCIÓN / INTELIGENCIA</span><p>Cada misión deja un rastro.</p><div class="local-chip"><i></i> CONSULTA LOCAL</div><small>Sector 07 · Campaña de 10 niveles</small></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="breadcrumb">ARCHIVO <span>/</span> <b id="breadcrumb">RESUMEN</b></div><div class="top-actions"><span id="connection" class="connection" role="status"><i></i> Sin conexión</span><button id="demo-toggle" class="button quiet" type="button">Ver demostración</button><button id="refresh" class="button" type="button"><span aria-hidden="true">↻</span> Actualizar</button></div></header>
+    <div id="notice" class="notice" role="status"></div>
+    <main id="main" tabindex="-1">
+      <div id="content"></div>
+    </main>
+    <footer><span>SECTOR 07 <span class="footer-slash">/</span> CONTENCIÓN</span><span id="sync-label">Datos del juego pendientes de conexión</span></footer>
+  </div>
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><div class="dialog-top"><span class="eyebrow">ARCHIVO / DETALLE</span><button id="close-dialog" class="icon-button" aria-label="Cerrar detalle">×</button></div><div id="detail-content"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_15tap"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/player_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ru62r"]
+size = Vector3(0.65, 1.8, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktjr4"]
+albedo_color = Color(0.14901961, 0.21568628, 0.29803923, 1)
+roughness = 0.65
+
+[sub_resource type="BoxMesh" id="BoxMesh_7wueq"]
+size = Vector3(0.18, 0.2, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oomub"]
+albedo_color = Color(0.5647059, 0.6431373, 0.70980394, 1)
+roughness = 0.65
+
+[sub_resource type="BoxMesh" id="BoxMesh_8y416"]
+size = Vector3(0.1, 0.1, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7860b"]
+albedo_color = Color(0.25882354, 0.9137255, 0.93333334, 1)
+roughness = 0.65
+emission_enabled = true
+emission = Color(0.25882354, 0.9137255, 0.93333334, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_xx81n"]
+size = Vector3(0.025, 0.03, 0.45)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0w4p8"]
+albedo_color = Color(0.0627451, 0.09411765, 0.14509805, 1)
+roughness = 0.65
+
+[sub_resource type="BoxMesh" id="BoxMesh_wl55n"]
+size = Vector3(0.12, 0.25, 0.14)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kggx2"]
+albedo_color = Color(0.63529414, 1, 1, 1)
+roughness = 0.65
+emission_enabled = true
+emission = Color(0.63529414, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4rn8"]
+size = Vector3(0.12, 0.12, 0.15)
+
+[sub_resource type="BoxMesh" id="RifleMesh"]
+size = Vector3(0.13, 0.13, 0.7)
+[sub_resource type="StandardMaterial3D" id="RifleMat"]
+albedo_color = Color(0.18, 0.35, 0.42, 1)
+
+[node name="Player" type="CharacterBody3D"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 10)
+script = ExtResource("1_15tap")
+
+[node name="CollisionShape3D254" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("BoxShape3D_ru62r")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+current = true
+fov = 78.0
+
+[node name="Weapon" type="Node3D" parent="Camera"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
+
+[node name="MeshInstance3D257" type="MeshInstance3D" parent="Camera/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.27, -0.55)
+material_override = SubResource("StandardMaterial3D_ktjr4")
+mesh = SubResource("BoxMesh_7wueq")
+
+[node name="MeshInstance3D258" type="MeshInstance3D" parent="Camera/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.23, -0.94)
+material_override = SubResource("StandardMaterial3D_oomub")
+mesh = SubResource("BoxMesh_8y416")
+
+[node name="MeshInstance3D259" type="MeshInstance3D" parent="Camera/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205, -0.24, -0.6)
+material_override = SubResource("StandardMaterial3D_7860b")
+mesh = SubResource("BoxMesh_xx81n")
+
+[node name="MeshInstance3D260" type="MeshInstance3D" parent="Camera/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.43, -0.35)
+material_override = SubResource("StandardMaterial3D_0w4p8")
+mesh = SubResource("BoxMesh_wl55n")
+
+[node name="Flash" type="MeshInstance3D" parent="Camera/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.23, -1.17)
+visible = false
+material_override = SubResource("StandardMaterial3D_kggx2")
+mesh = SubResource("BoxMesh_c4rn8")
+
+[node name="Shot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+
+[node name="RifleExtension" type="MeshInstance3D" parent="Camera/Weapon"]
+visible = false
+position = Vector3(0.3, -0.23, -1.2)
+mesh = SubResource("RifleMesh")
+material_override = SubResource("RifleMat")

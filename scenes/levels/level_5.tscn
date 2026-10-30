@@ -1,0 +1,3640 @@
+[gd_scene format=3 uid="uid://br5qtv7lnj1xf"]
+
+[ext_resource type="Script" uid="uid://x2clw2tceknt" path="res://scripts/core/game.gd" id="game"]
+[ext_resource type="PackedScene" uid="uid://cnyx3q4bl5a3o" path="res://scenes/ui/hud.tscn" id="hud"]
+[ext_resource type="ArrayMesh" uid="uid://dbf2u5p7slo86" path="res://assets/models/structures/Platform_Metal.obj" id="Platform_Metal"]
+[ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="player"]
+[ext_resource type="ArrayMesh" uid="uid://der7bt3yxrh6u" path="res://assets/models/props/Prop_Barrel_Large.obj" id="Prop_Barrel_Large"]
+[ext_resource type="ArrayMesh" uid="uid://w0nymhgmeyl7" path="res://assets/models/props/Prop_Computer.obj" id="Prop_Computer"]
+[ext_resource type="ArrayMesh" uid="uid://hiaclwpm5irw" path="res://assets/models/props/Prop_Crate3.obj" id="Prop_Crate3"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemy_1.tscn" id="roster_1"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemy_3.tscn" id="roster_3"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemy_4.tscn" id="roster_4"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemy_5.tscn" id="roster_5"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemy_8.tscn" id="roster_8"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemy_9.tscn" id="roster_9"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemy_13.tscn" id="roster_13"]
+[ext_resource type="PackedScene" path="res://scenes/actors/enemy_16.tscn" id="roster_16"]
+[ext_resource type="Texture2D" uid="uid://dwlw6sektuvxs" path="res://assets/T_Trim_01_BaseColor.png" id="tex1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/upgrade_screen.tscn" id="upgrades"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.035, 0.008, 0.027, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.68, 0.48, 0.57, 1)
+ambient_light_energy = 0.8
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.035, 0.008, 0.027, 1)
+fog_density = 0.006
+
+[sub_resource type="BoxShape3D" id="shape1"]
+size = Vector3(16, 0.4, 12)
+
+[sub_resource type="StandardMaterial3D" id="mat2"]
+albedo_color = Color(0.259, 0.15, 0.23, 1)
+metallic = 0.52
+roughness = 0.75
+
+[sub_resource type="BoxMesh" id="back1"]
+material = SubResource("mat2")
+size = Vector3(16, 0.4, 12)
+
+[sub_resource type="BoxShape3D" id="shape3"]
+size = Vector3(18, 0.4, 14)
+
+[sub_resource type="BoxMesh" id="back3"]
+material = SubResource("mat2")
+size = Vector3(18, 0.4, 14)
+
+[sub_resource type="BoxShape3D" id="shape5"]
+size = Vector3(18, 0.4, 20)
+
+[sub_resource type="BoxMesh" id="back5"]
+material = SubResource("mat2")
+size = Vector3(18, 0.4, 20)
+
+[sub_resource type="BoxShape3D" id="shape7"]
+size = Vector3(18, 0.4, 20)
+
+[sub_resource type="BoxMesh" id="back7"]
+material = SubResource("mat2")
+size = Vector3(18, 0.4, 20)
+
+[sub_resource type="BoxShape3D" id="shape9"]
+size = Vector3(22, 0.4, 18)
+
+[sub_resource type="BoxMesh" id="back9"]
+material = SubResource("mat2")
+size = Vector3(22, 0.4, 18)
+
+[sub_resource type="BoxShape3D" id="shape11"]
+size = Vector3(18, 0.4, 14)
+
+[sub_resource type="BoxMesh" id="back11"]
+material = SubResource("mat2")
+size = Vector3(18, 0.4, 14)
+
+[sub_resource type="BoxShape3D" id="shape13"]
+size = Vector3(18, 0.4, 14)
+
+[sub_resource type="BoxMesh" id="back13"]
+material = SubResource("mat2")
+size = Vector3(18, 0.4, 14)
+
+[sub_resource type="BoxShape3D" id="shape15"]
+size = Vector3(4, 0.4, 10)
+
+[sub_resource type="BoxMesh" id="back15"]
+material = SubResource("mat2")
+size = Vector3(4, 0.4, 10)
+
+[sub_resource type="BoxShape3D" id="shape17"]
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxMesh" id="back17"]
+material = SubResource("mat2")
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxShape3D" id="shape19"]
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxMesh" id="back19"]
+material = SubResource("mat2")
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxShape3D" id="shape21"]
+size = Vector3(4, 0.4, 16)
+
+[sub_resource type="BoxMesh" id="back21"]
+material = SubResource("mat2")
+size = Vector3(4, 0.4, 16)
+
+[sub_resource type="BoxShape3D" id="shape23"]
+size = Vector3(4, 0.4, 16)
+
+[sub_resource type="BoxMesh" id="back23"]
+material = SubResource("mat2")
+size = Vector3(4, 0.4, 16)
+
+[sub_resource type="BoxShape3D" id="shape25"]
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxMesh" id="back25"]
+material = SubResource("mat2")
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxShape3D" id="shape27"]
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxMesh" id="back27"]
+material = SubResource("mat2")
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxShape3D" id="shape29"]
+size = Vector3(4, 0.4, 10)
+
+[sub_resource type="BoxMesh" id="back29"]
+material = SubResource("mat2")
+size = Vector3(4, 0.4, 10)
+
+[sub_resource type="BoxShape3D" id="shape31"]
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxMesh" id="back31"]
+material = SubResource("mat2")
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxShape3D" id="shape33"]
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxMesh" id="back33"]
+material = SubResource("mat2")
+size = Vector3(12, 0.4, 4)
+
+[sub_resource type="BoxShape3D" id="shape35"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="StandardMaterial3D" id="mat3"]
+albedo_color = Color(0.404, 0.186, 0.302, 1)
+metallic = 0.65
+roughness = 0.72
+
+[sub_resource type="BoxMesh" id="back35"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape37"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back37"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape39"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back39"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape41"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back41"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape43"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back43"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape45"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back45"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape47"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back47"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape49"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back49"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape51"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back51"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape53"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back53"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape55"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back55"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape57"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back57"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape59"]
+size = Vector3(1, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back59"]
+material = SubResource("mat3")
+size = Vector3(1, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape61"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back61"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape63"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back63"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape65"]
+size = Vector3(1, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back65"]
+material = SubResource("mat3")
+size = Vector3(1, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape67"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back67"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape69"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back69"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape71"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back71"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape73"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back73"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape75"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back75"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape77"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back77"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape79"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back79"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape81"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back81"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape83"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back83"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape85"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back85"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape87"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back87"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape89"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back89"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape91"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back91"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape93"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back93"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape95"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back95"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape97"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back97"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape99"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back99"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape101"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back101"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape103"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back103"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape105"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back105"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape107"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back107"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape109"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back109"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape111"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back111"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape113"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back113"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape115"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back115"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape117"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back117"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape119"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back119"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape121"]
+size = Vector3(1, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back121"]
+material = SubResource("mat3")
+size = Vector3(1, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape123"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back123"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape125"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back125"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape127"]
+size = Vector3(1, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back127"]
+material = SubResource("mat3")
+size = Vector3(1, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape129"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back129"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape131"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back131"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape133"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back133"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape135"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back135"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape137"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back137"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape139"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back139"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape141"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back141"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape143"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back143"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape145"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back145"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape147"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back147"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape149"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back149"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape151"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back151"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape153"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back153"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape155"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back155"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape157"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back157"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape159"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back159"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape161"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back161"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape163"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back163"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape165"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back165"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape167"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back167"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape169"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back169"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape171"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back171"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape173"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back173"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape175"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back175"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape177"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back177"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape179"]
+size = Vector3(3, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back179"]
+material = SubResource("mat3")
+size = Vector3(3, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape181"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back181"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape183"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back183"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape185"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back185"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape187"]
+size = Vector3(2, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back187"]
+material = SubResource("mat3")
+size = Vector3(2, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape189"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back189"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape191"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back191"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape193"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back193"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape195"]
+size = Vector3(4, 4.2, 0.35)
+
+[sub_resource type="BoxMesh" id="back195"]
+material = SubResource("mat3")
+size = Vector3(4, 4.2, 0.245)
+
+[sub_resource type="BoxShape3D" id="shape197"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back197"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape199"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back199"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape201"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back201"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape203"]
+size = Vector3(0.35, 4.2, 2)
+
+[sub_resource type="BoxMesh" id="back203"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 2)
+
+[sub_resource type="BoxShape3D" id="shape205"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back205"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape207"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back207"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape209"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back209"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape211"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back211"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape213"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back213"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape215"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back215"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape217"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back217"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape219"]
+size = Vector3(0.35, 4.2, 2)
+
+[sub_resource type="BoxMesh" id="back219"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 2)
+
+[sub_resource type="BoxShape3D" id="shape221"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back221"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape223"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back223"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape225"]
+size = Vector3(0.35, 4.2, 2)
+
+[sub_resource type="BoxMesh" id="back225"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 2)
+
+[sub_resource type="BoxShape3D" id="shape227"]
+size = Vector3(0.35, 4.2, 3)
+
+[sub_resource type="BoxMesh" id="back227"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 3)
+
+[sub_resource type="BoxShape3D" id="shape229"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back229"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape231"]
+size = Vector3(0.35, 4.2, 1)
+
+[sub_resource type="BoxMesh" id="back231"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 1)
+
+[sub_resource type="BoxShape3D" id="shape233"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back233"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape235"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back235"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape237"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back237"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape239"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back239"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape241"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back241"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape243"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back243"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape245"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back245"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape247"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back247"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape249"]
+size = Vector3(0.35, 4.2, 2)
+
+[sub_resource type="BoxMesh" id="back249"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 2)
+
+[sub_resource type="BoxShape3D" id="shape251"]
+size = Vector3(0.35, 4.2, 1)
+
+[sub_resource type="BoxMesh" id="back251"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 1)
+
+[sub_resource type="BoxShape3D" id="shape253"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back253"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape255"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back255"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape257"]
+size = Vector3(0.35, 4.2, 1)
+
+[sub_resource type="BoxMesh" id="back257"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 1)
+
+[sub_resource type="BoxShape3D" id="shape259"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back259"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape261"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back261"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape263"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back263"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape265"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back265"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape267"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back267"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape269"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back269"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape271"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back271"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape273"]
+size = Vector3(0.35, 4.2, 1)
+
+[sub_resource type="BoxMesh" id="back273"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 1)
+
+[sub_resource type="BoxShape3D" id="shape275"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back275"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape277"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back277"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape279"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back279"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape281"]
+size = Vector3(0.35, 4.2, 1)
+
+[sub_resource type="BoxMesh" id="back281"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 1)
+
+[sub_resource type="BoxShape3D" id="shape283"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back283"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape285"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back285"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape287"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back287"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape289"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back289"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape291"]
+size = Vector3(0.35, 4.2, 1)
+
+[sub_resource type="BoxMesh" id="back291"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 1)
+
+[sub_resource type="BoxShape3D" id="shape293"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back293"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape295"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back295"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape297"]
+size = Vector3(0.35, 4.2, 1)
+
+[sub_resource type="BoxMesh" id="back297"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 1)
+
+[sub_resource type="BoxShape3D" id="shape299"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back299"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape301"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back301"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape303"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back303"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape305"]
+size = Vector3(0.35, 4.2, 2)
+
+[sub_resource type="BoxMesh" id="back305"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 2)
+
+[sub_resource type="BoxShape3D" id="shape307"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back307"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape309"]
+size = Vector3(0.35, 4.2, 1)
+
+[sub_resource type="BoxMesh" id="back309"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 1)
+
+[sub_resource type="BoxShape3D" id="shape311"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back311"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape313"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back313"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape315"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back315"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape317"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back317"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape319"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back319"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape321"]
+size = Vector3(0.35, 4.2, 3)
+
+[sub_resource type="BoxMesh" id="back321"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 3)
+
+[sub_resource type="BoxShape3D" id="shape323"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back323"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape325"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back325"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape327"]
+size = Vector3(0.35, 4.2, 2)
+
+[sub_resource type="BoxMesh" id="back327"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 2)
+
+[sub_resource type="BoxShape3D" id="shape329"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back329"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape331"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back331"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape333"]
+size = Vector3(0.35, 4.2, 2)
+
+[sub_resource type="BoxMesh" id="back333"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 2)
+
+[sub_resource type="BoxShape3D" id="shape335"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back335"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape337"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back337"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape339"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back339"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape341"]
+size = Vector3(0.35, 4.2, 2)
+
+[sub_resource type="BoxMesh" id="back341"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 2)
+
+[sub_resource type="BoxShape3D" id="shape343"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back343"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape345"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back345"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape347"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back347"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape349"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back349"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="BoxShape3D" id="shape351"]
+size = Vector3(0.35, 4.2, 4)
+
+[sub_resource type="BoxMesh" id="back351"]
+material = SubResource("mat3")
+size = Vector3(0.245, 4.2, 4)
+
+[sub_resource type="StandardMaterial3D" id="mat1"]
+albedo_texture = ExtResource("tex1")
+roughness = 0.7
+
+[sub_resource type="BoxShape3D" id="shape354"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape356"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape358"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape360"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape362"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape364"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape366"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape368"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape370"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape372"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape374"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="BoxShape3D" id="shape376"]
+size = Vector3(1.8, 1.3, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="ceiling_mat"]
+albedo_color = Color(0.13, 0.15, 0.18, 1)
+metallic = 0.6
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="roof_mesh0"]
+material = SubResource("ceiling_mat")
+size = Vector3(16, 0.24, 12)
+
+[sub_resource type="BoxShape3D" id="roof_shape0"]
+size = Vector3(16, 0.24, 12)
+
+[sub_resource type="BoxMesh" id="roof_mesh1"]
+material = SubResource("ceiling_mat")
+size = Vector3(18, 0.24, 14)
+
+[sub_resource type="BoxShape3D" id="roof_shape1"]
+size = Vector3(18, 0.24, 14)
+
+[sub_resource type="BoxMesh" id="roof_mesh2"]
+material = SubResource("ceiling_mat")
+size = Vector3(18, 0.24, 20)
+
+[sub_resource type="BoxShape3D" id="roof_shape2"]
+size = Vector3(18, 0.24, 20)
+
+[sub_resource type="BoxMesh" id="roof_mesh3"]
+material = SubResource("ceiling_mat")
+size = Vector3(18, 0.24, 20)
+
+[sub_resource type="BoxShape3D" id="roof_shape3"]
+size = Vector3(18, 0.24, 20)
+
+[sub_resource type="BoxMesh" id="roof_mesh4"]
+material = SubResource("ceiling_mat")
+size = Vector3(22, 0.24, 18)
+
+[sub_resource type="BoxShape3D" id="roof_shape4"]
+size = Vector3(22, 0.24, 18)
+
+[sub_resource type="BoxMesh" id="roof_mesh5"]
+material = SubResource("ceiling_mat")
+size = Vector3(18, 0.24, 14)
+
+[sub_resource type="BoxShape3D" id="roof_shape5"]
+size = Vector3(18, 0.24, 14)
+
+[sub_resource type="BoxMesh" id="roof_mesh6"]
+material = SubResource("ceiling_mat")
+size = Vector3(18, 0.24, 14)
+
+[sub_resource type="BoxShape3D" id="roof_shape6"]
+size = Vector3(18, 0.24, 14)
+
+[sub_resource type="BoxMesh" id="roof_mesh7"]
+material = SubResource("ceiling_mat")
+size = Vector3(4, 0.24, 10)
+
+[sub_resource type="BoxShape3D" id="roof_shape7"]
+size = Vector3(4, 0.24, 10)
+
+[sub_resource type="BoxMesh" id="roof_mesh8"]
+material = SubResource("ceiling_mat")
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxShape3D" id="roof_shape8"]
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxMesh" id="roof_mesh9"]
+material = SubResource("ceiling_mat")
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxShape3D" id="roof_shape9"]
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxMesh" id="roof_mesh10"]
+material = SubResource("ceiling_mat")
+size = Vector3(4, 0.24, 16)
+
+[sub_resource type="BoxShape3D" id="roof_shape10"]
+size = Vector3(4, 0.24, 16)
+
+[sub_resource type="BoxMesh" id="roof_mesh11"]
+material = SubResource("ceiling_mat")
+size = Vector3(4, 0.24, 16)
+
+[sub_resource type="BoxShape3D" id="roof_shape11"]
+size = Vector3(4, 0.24, 16)
+
+[sub_resource type="BoxMesh" id="roof_mesh12"]
+material = SubResource("ceiling_mat")
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxShape3D" id="roof_shape12"]
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxMesh" id="roof_mesh13"]
+material = SubResource("ceiling_mat")
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxShape3D" id="roof_shape13"]
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxMesh" id="roof_mesh14"]
+material = SubResource("ceiling_mat")
+size = Vector3(4, 0.24, 10)
+
+[sub_resource type="BoxShape3D" id="roof_shape14"]
+size = Vector3(4, 0.24, 10)
+
+[sub_resource type="BoxMesh" id="roof_mesh15"]
+material = SubResource("ceiling_mat")
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxShape3D" id="roof_shape15"]
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxMesh" id="roof_mesh16"]
+material = SubResource("ceiling_mat")
+size = Vector3(12, 0.24, 4)
+
+[sub_resource type="BoxShape3D" id="roof_shape16"]
+size = Vector3(12, 0.24, 4)
+
+[node name="Level5" type="Node3D" unique_id=217470597]
+script = ExtResource("game")
+level_number = 5
+level_title = "Biocontención"
+next_level = "res://scenes/levels/level_6.tscn"
+navigation_extent = 40
+map_scale = 1.0
+room_layout = true
+
+[node name="World" type="WorldEnvironment" parent="." unique_id=911226953]
+environment = SubResource("env")
+
+[node name="Arena" type="Node3D" parent="." unique_id=251263077]
+
+[node name="Floor0" type="StaticBody3D" parent="Arena" unique_id=1762726992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor0" unique_id=2066472087]
+shape = SubResource("shape1")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor0" unique_id=425827094]
+mesh = SubResource("back1")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Arena/Floor0" unique_id=1781767362]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor2" type="StaticBody3D" parent="Arena" unique_id=538281882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 12)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor2" unique_id=426672308]
+shape = SubResource("shape3")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor2" unique_id=505408855]
+mesh = SubResource("back3")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Arena/Floor2" unique_id=145962932]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 3.5, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor4" type="StaticBody3D" parent="Arena" unique_id=283497490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, 4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor4" unique_id=1628321672]
+shape = SubResource("shape5")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor4" unique_id=1000324329]
+mesh = SubResource("back5")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Arena/Floor4" unique_id=736104647]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor6" type="StaticBody3D" parent="Arena" unique_id=1198704914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, 4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor6" unique_id=1277780249]
+shape = SubResource("shape7")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor6" unique_id=1549728228]
+mesh = SubResource("back7")
+
+[node name="Mesh8" type="MeshInstance3D" parent="Arena/Floor6" unique_id=1937862715]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor8" type="StaticBody3D" parent="Arena" unique_id=1952433233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -12)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor8" unique_id=1431592876]
+shape = SubResource("shape9")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor8" unique_id=21030522]
+mesh = SubResource("back9")
+
+[node name="Mesh10" type="MeshInstance3D" parent="Arena/Floor8" unique_id=1736386595]
+transform = Transform3D(5.5, 0, 0, 0, 1, 0, 0, 0, 4.5, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor10" type="StaticBody3D" parent="Arena" unique_id=1153232326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, -23)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor10" unique_id=1814918010]
+shape = SubResource("shape11")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor10" unique_id=1744532410]
+mesh = SubResource("back11")
+
+[node name="Mesh12" type="MeshInstance3D" parent="Arena/Floor10" unique_id=1182941440]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 3.5, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor12" type="StaticBody3D" parent="Arena" unique_id=1709532389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, -23)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor12" unique_id=1348928422]
+shape = SubResource("shape13")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor12" unique_id=238513819]
+mesh = SubResource("back13")
+
+[node name="Mesh14" type="MeshInstance3D" parent="Arena/Floor12" unique_id=2029813225]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 3.5, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor14" type="StaticBody3D" parent="Arena" unique_id=89315431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 22)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor14" unique_id=1845142264]
+shape = SubResource("shape15")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor14" unique_id=145117322]
+mesh = SubResource("back15")
+
+[node name="Mesh16" type="MeshInstance3D" parent="Arena/Floor14" unique_id=962665444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor16" type="StaticBody3D" parent="Arena" unique_id=1150994889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, 8)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor16" unique_id=360780094]
+shape = SubResource("shape17")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor16" unique_id=1926400818]
+mesh = SubResource("back17")
+
+[node name="Mesh18" type="MeshInstance3D" parent="Arena/Floor16" unique_id=642386643]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor18" type="StaticBody3D" parent="Arena" unique_id=1835508171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, 8)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor18" unique_id=175940727]
+shape = SubResource("shape19")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor18" unique_id=1375002289]
+mesh = SubResource("back19")
+
+[node name="Mesh20" type="MeshInstance3D" parent="Arena/Floor18" unique_id=1475652560]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor20" type="StaticBody3D" parent="Arena" unique_id=1249429866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, -10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor20" unique_id=699353616]
+shape = SubResource("shape21")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor20" unique_id=548397549]
+mesh = SubResource("back21")
+
+[node name="Mesh22" type="MeshInstance3D" parent="Arena/Floor20" unique_id=303103637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor22" type="StaticBody3D" parent="Arena" unique_id=340447585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, -10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor22" unique_id=2146950325]
+shape = SubResource("shape23")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor22" unique_id=180596553]
+mesh = SubResource("back23")
+
+[node name="Mesh24" type="MeshInstance3D" parent="Arena/Floor22" unique_id=624233914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor24" type="StaticBody3D" parent="Arena" unique_id=1179267527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, -15)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor24" unique_id=1103151884]
+shape = SubResource("shape25")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor24" unique_id=2129545114]
+mesh = SubResource("back25")
+
+[node name="Mesh26" type="MeshInstance3D" parent="Arena/Floor24" unique_id=1777270227]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor26" type="StaticBody3D" parent="Arena" unique_id=1864856052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, -15)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor26" unique_id=2051591468]
+shape = SubResource("shape27")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor26" unique_id=1190729116]
+mesh = SubResource("back27")
+
+[node name="Mesh28" type="MeshInstance3D" parent="Arena/Floor26" unique_id=1989068283]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor28" type="StaticBody3D" parent="Arena" unique_id=807548231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor28" unique_id=799927414]
+shape = SubResource("shape29")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor28" unique_id=2095299753]
+mesh = SubResource("back29")
+
+[node name="Mesh30" type="MeshInstance3D" parent="Arena/Floor28" unique_id=1365361631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor30" type="StaticBody3D" parent="Arena" unique_id=851118834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, -23)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor30" unique_id=678825778]
+shape = SubResource("shape31")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor30" unique_id=1096638568]
+mesh = SubResource("back31")
+
+[node name="Mesh32" type="MeshInstance3D" parent="Arena/Floor30" unique_id=1458068199]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Floor32" type="StaticBody3D" parent="Arena" unique_id=1932856613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, -23)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Floor32" unique_id=669722549]
+shape = SubResource("shape33")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Floor32" unique_id=233562851]
+mesh = SubResource("back33")
+
+[node name="Mesh34" type="MeshInstance3D" parent="Arena/Floor32" unique_id=1320480054]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0)
+material_override = SubResource("mat2")
+mesh = ExtResource("Platform_Metal")
+
+[node name="Wall34" type="StaticBody3D" parent="Arena" unique_id=1381010726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall34" unique_id=1394001766]
+shape = SubResource("shape35")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall34" unique_id=1488695238]
+mesh = SubResource("back35")
+
+[node name="Wall36" type="StaticBody3D" parent="Arena" unique_id=2050773313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall36" unique_id=977255507]
+shape = SubResource("shape37")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall36" unique_id=109602820]
+mesh = SubResource("back37")
+
+[node name="Wall38" type="StaticBody3D" parent="Arena" unique_id=260940562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall38" unique_id=2013700251]
+shape = SubResource("shape39")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall38" unique_id=1083048492]
+mesh = SubResource("back39")
+
+[node name="Wall40" type="StaticBody3D" parent="Arena" unique_id=2127226664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall40" unique_id=682966991]
+shape = SubResource("shape41")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall40" unique_id=644996683]
+mesh = SubResource("back41")
+
+[node name="Wall42" type="StaticBody3D" parent="Arena" unique_id=542074608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall42" unique_id=1941018319]
+shape = SubResource("shape43")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall42" unique_id=613733317]
+mesh = SubResource("back43")
+
+[node name="Wall44" type="StaticBody3D" parent="Arena" unique_id=2088889636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall44" unique_id=67062335]
+shape = SubResource("shape45")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall44" unique_id=1760487907]
+mesh = SubResource("back45")
+
+[node name="Wall46" type="StaticBody3D" parent="Arena" unique_id=1564944348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall46" unique_id=375842114]
+shape = SubResource("shape47")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall46" unique_id=1186522992]
+mesh = SubResource("back47")
+
+[node name="Wall48" type="StaticBody3D" parent="Arena" unique_id=910412642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall48" unique_id=1752312886]
+shape = SubResource("shape49")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall48" unique_id=1663206133]
+mesh = SubResource("back49")
+
+[node name="Wall50" type="StaticBody3D" parent="Arena" unique_id=1460960454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall50" unique_id=143713047]
+shape = SubResource("shape51")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall50" unique_id=702076772]
+mesh = SubResource("back51")
+
+[node name="Wall52" type="StaticBody3D" parent="Arena" unique_id=865161538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 2.1, -30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall52" unique_id=528062465]
+shape = SubResource("shape53")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall52" unique_id=758598343]
+mesh = SubResource("back53")
+
+[node name="Wall54" type="StaticBody3D" parent="Arena" unique_id=626141576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.1, -25)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall54" unique_id=2022672172]
+shape = SubResource("shape55")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall54" unique_id=127869629]
+mesh = SubResource("back55")
+
+[node name="Wall56" type="StaticBody3D" parent="Arena" unique_id=375511750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.1, -25)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall56" unique_id=970333607]
+shape = SubResource("shape57")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall56" unique_id=1034154245]
+mesh = SubResource("back57")
+
+[node name="Wall58" type="StaticBody3D" parent="Arena" unique_id=1277441463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.1, -25)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall58" unique_id=1316195170]
+shape = SubResource("shape59")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall58" unique_id=798220399]
+mesh = SubResource("back59")
+
+[node name="Wall60" type="StaticBody3D" parent="Arena" unique_id=1805105672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.1, -25)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall60" unique_id=759939931]
+shape = SubResource("shape61")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall60" unique_id=447686605]
+mesh = SubResource("back61")
+
+[node name="Wall62" type="StaticBody3D" parent="Arena" unique_id=783950395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.1, -25)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall62" unique_id=1069962968]
+shape = SubResource("shape63")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall62" unique_id=328881375]
+mesh = SubResource("back63")
+
+[node name="Wall64" type="StaticBody3D" parent="Arena" unique_id=1337926016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2.1, -25)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall64" unique_id=1334587989]
+shape = SubResource("shape65")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall64" unique_id=1821702476]
+mesh = SubResource("back65")
+
+[node name="Wall66" type="StaticBody3D" parent="Arena" unique_id=1405993415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.1, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall66" unique_id=941388029]
+shape = SubResource("shape67")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall66" unique_id=1985939060]
+mesh = SubResource("back67")
+
+[node name="Wall68" type="StaticBody3D" parent="Arena" unique_id=957349022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.1, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall68" unique_id=123148961]
+shape = SubResource("shape69")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall68" unique_id=29500468]
+mesh = SubResource("back69")
+
+[node name="Wall70" type="StaticBody3D" parent="Arena" unique_id=1141541192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall70" unique_id=1780274120]
+shape = SubResource("shape71")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall70" unique_id=1527422875]
+mesh = SubResource("back71")
+
+[node name="Wall72" type="StaticBody3D" parent="Arena" unique_id=707924393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.1, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall72" unique_id=1453793866]
+shape = SubResource("shape73")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall72" unique_id=1121682409]
+mesh = SubResource("back73")
+
+[node name="Wall74" type="StaticBody3D" parent="Arena" unique_id=363830409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.1, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall74" unique_id=1864153035]
+shape = SubResource("shape75")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall74" unique_id=2055762346]
+mesh = SubResource("back75")
+
+[node name="Wall76" type="StaticBody3D" parent="Arena" unique_id=1046707203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.1, -17)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall76" unique_id=1646857027]
+shape = SubResource("shape77")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall76" unique_id=1477101470]
+mesh = SubResource("back77")
+
+[node name="Wall78" type="StaticBody3D" parent="Arena" unique_id=1591955264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.1, -17)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall78" unique_id=1888473306]
+shape = SubResource("shape79")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall78" unique_id=1556338001]
+mesh = SubResource("back79")
+
+[node name="Wall80" type="StaticBody3D" parent="Arena" unique_id=370054716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 2.1, -16)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall80" unique_id=1796413617]
+shape = SubResource("shape81")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall80" unique_id=84599958]
+mesh = SubResource("back81")
+
+[node name="Wall82" type="StaticBody3D" parent="Arena" unique_id=1976522708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 2.1, -16)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall82" unique_id=1951984943]
+shape = SubResource("shape83")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall82" unique_id=510901339]
+mesh = SubResource("back83")
+
+[node name="Wall84" type="StaticBody3D" parent="Arena" unique_id=1254686304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2.1, -16)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall84" unique_id=916458079]
+shape = SubResource("shape85")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall84" unique_id=1122907092]
+mesh = SubResource("back85")
+
+[node name="Wall86" type="StaticBody3D" parent="Arena" unique_id=915674023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.1, -16)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall86" unique_id=6077582]
+shape = SubResource("shape87")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall86" unique_id=1473907554]
+mesh = SubResource("back87")
+
+[node name="Wall88" type="StaticBody3D" parent="Arena" unique_id=11498445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 2.1, -16)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall88" unique_id=953262006]
+shape = SubResource("shape89")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall88" unique_id=151426382]
+mesh = SubResource("back89")
+
+[node name="Wall90" type="StaticBody3D" parent="Arena" unique_id=889163071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 2.1, -16)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall90" unique_id=1060307573]
+shape = SubResource("shape91")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall90" unique_id=1172163130]
+mesh = SubResource("back91")
+
+[node name="Wall92" type="StaticBody3D" parent="Arena" unique_id=351544485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.1, -13)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall92" unique_id=1361446178]
+shape = SubResource("shape93")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall92" unique_id=985251445]
+mesh = SubResource("back93")
+
+[node name="Wall94" type="StaticBody3D" parent="Arena" unique_id=487772805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2.1, -13)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall94" unique_id=1857145156]
+shape = SubResource("shape95")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall94" unique_id=1313752800]
+mesh = SubResource("back95")
+
+[node name="Wall96" type="StaticBody3D" parent="Arena" unique_id=345727015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.1, -13)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall96" unique_id=1613801151]
+shape = SubResource("shape97")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall96" unique_id=1563429228]
+mesh = SubResource("back97")
+
+[node name="Wall98" type="StaticBody3D" parent="Arena" unique_id=940456877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2.1, -13)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall98" unique_id=1234949638]
+shape = SubResource("shape99")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall98" unique_id=217249937]
+mesh = SubResource("back99")
+
+[node name="Wall100" type="StaticBody3D" parent="Arena" unique_id=1996388446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 2.1, -6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall100" unique_id=486007850]
+shape = SubResource("shape101")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall100" unique_id=739094211]
+mesh = SubResource("back101")
+
+[node name="Wall102" type="StaticBody3D" parent="Arena" unique_id=301111437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 2.1, -6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall102" unique_id=1002882390]
+shape = SubResource("shape103")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall102" unique_id=776962954]
+mesh = SubResource("back103")
+
+[node name="Wall104" type="StaticBody3D" parent="Arena" unique_id=1536654359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2.1, -6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall104" unique_id=1726441211]
+shape = SubResource("shape105")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall104" unique_id=112712531]
+mesh = SubResource("back105")
+
+[node name="Wall106" type="StaticBody3D" parent="Arena" unique_id=1377677095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.1, -6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall106" unique_id=1989365549]
+shape = SubResource("shape107")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall106" unique_id=304306337]
+mesh = SubResource("back107")
+
+[node name="Wall108" type="StaticBody3D" parent="Arena" unique_id=1790205383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.1, -6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall108" unique_id=1640821744]
+shape = SubResource("shape109")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall108" unique_id=629754501]
+mesh = SubResource("back109")
+
+[node name="Wall110" type="StaticBody3D" parent="Arena" unique_id=1158171883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 2.1, -6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall110" unique_id=459659345]
+shape = SubResource("shape111")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall110" unique_id=701027700]
+mesh = SubResource("back111")
+
+[node name="Wall112" type="StaticBody3D" parent="Arena" unique_id=536031553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 2.1, -6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall112" unique_id=803924933]
+shape = SubResource("shape113")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall112" unique_id=1745095582]
+mesh = SubResource("back113")
+
+[node name="Wall114" type="StaticBody3D" parent="Arena" unique_id=911937907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 2.1, -6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall114" unique_id=2055567967]
+shape = SubResource("shape115")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall114" unique_id=1406574599]
+mesh = SubResource("back115")
+
+[node name="Wall116" type="StaticBody3D" parent="Arena" unique_id=883258835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.1, -3)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall116" unique_id=1232440580]
+shape = SubResource("shape117")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall116" unique_id=843049079]
+mesh = SubResource("back117")
+
+[node name="Wall118" type="StaticBody3D" parent="Arena" unique_id=877908113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.1, -3)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall118" unique_id=894383256]
+shape = SubResource("shape119")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall118" unique_id=22751815]
+mesh = SubResource("back119")
+
+[node name="Wall120" type="StaticBody3D" parent="Arena" unique_id=1502273685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.1, -3)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall120" unique_id=370425619]
+shape = SubResource("shape121")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall120" unique_id=582613324]
+mesh = SubResource("back121")
+
+[node name="Wall122" type="StaticBody3D" parent="Arena" unique_id=1598247867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.1, -3)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall122" unique_id=494046659]
+shape = SubResource("shape123")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall122" unique_id=1984158842]
+mesh = SubResource("back123")
+
+[node name="Wall124" type="StaticBody3D" parent="Arena" unique_id=333441171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.1, -3)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall124" unique_id=295857354]
+shape = SubResource("shape125")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall124" unique_id=75397234]
+mesh = SubResource("back125")
+
+[node name="Wall126" type="StaticBody3D" parent="Arena" unique_id=12344643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 2.1, -3)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall126" unique_id=45318695]
+shape = SubResource("shape127")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall126" unique_id=1988397311]
+mesh = SubResource("back127")
+
+[node name="Wall128" type="StaticBody3D" parent="Arena" unique_id=2132717177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.1, 5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall128" unique_id=851917296]
+shape = SubResource("shape129")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall128" unique_id=498992930]
+mesh = SubResource("back129")
+
+[node name="Wall130" type="StaticBody3D" parent="Arena" unique_id=1758353359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.1, 5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall130" unique_id=325605532]
+shape = SubResource("shape131")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall130" unique_id=1540173918]
+mesh = SubResource("back131")
+
+[node name="Wall132" type="StaticBody3D" parent="Arena" unique_id=2044440483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.1, 5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall132" unique_id=141997219]
+shape = SubResource("shape133")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall132" unique_id=119048443]
+mesh = SubResource("back133")
+
+[node name="Wall134" type="StaticBody3D" parent="Arena" unique_id=1746489558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.1, 5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall134" unique_id=1735020215]
+shape = SubResource("shape135")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall134" unique_id=666938065]
+mesh = SubResource("back135")
+
+[node name="Wall136" type="StaticBody3D" parent="Arena" unique_id=488959598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.1, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall136" unique_id=458394367]
+shape = SubResource("shape137")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall136" unique_id=916156173]
+mesh = SubResource("back137")
+
+[node name="Wall138" type="StaticBody3D" parent="Arena" unique_id=1266268693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall138" unique_id=467539270]
+shape = SubResource("shape139")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall138" unique_id=2012900937]
+mesh = SubResource("back139")
+
+[node name="Wall140" type="StaticBody3D" parent="Arena" unique_id=1248724305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.1, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall140" unique_id=1813635181]
+shape = SubResource("shape141")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall140" unique_id=915050617]
+mesh = SubResource("back141")
+
+[node name="Wall142" type="StaticBody3D" parent="Arena" unique_id=1582316186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall142" unique_id=1828434002]
+shape = SubResource("shape143")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall142" unique_id=1970577402]
+mesh = SubResource("back143")
+
+[node name="Wall144" type="StaticBody3D" parent="Arena" unique_id=1719907596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.1, 10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall144" unique_id=1911979674]
+shape = SubResource("shape145")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall144" unique_id=1335264641]
+mesh = SubResource("back145")
+
+[node name="Wall146" type="StaticBody3D" parent="Arena" unique_id=817113237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1, 10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall146" unique_id=2098319015]
+shape = SubResource("shape147")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall146" unique_id=1746475154]
+mesh = SubResource("back147")
+
+[node name="Wall148" type="StaticBody3D" parent="Arena" unique_id=1196725225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.1, 10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall148" unique_id=1541554568]
+shape = SubResource("shape149")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall148" unique_id=812716081]
+mesh = SubResource("back149")
+
+[node name="Wall150" type="StaticBody3D" parent="Arena" unique_id=1293805154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1, 10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall150" unique_id=674838077]
+shape = SubResource("shape151")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall150" unique_id=1235900157]
+mesh = SubResource("back151")
+
+[node name="Wall152" type="StaticBody3D" parent="Arena" unique_id=1727310812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall152" unique_id=1037928107]
+shape = SubResource("shape153")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall152" unique_id=549604993]
+mesh = SubResource("back153")
+
+[node name="Wall154" type="StaticBody3D" parent="Arena" unique_id=441219356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall154" unique_id=1166413337]
+shape = SubResource("shape155")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall154" unique_id=1893631897]
+mesh = SubResource("back155")
+
+[node name="Wall156" type="StaticBody3D" parent="Arena" unique_id=626592106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall156" unique_id=1224533030]
+shape = SubResource("shape157")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall156" unique_id=2139261577]
+mesh = SubResource("back157")
+
+[node name="Wall158" type="StaticBody3D" parent="Arena" unique_id=1273003803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall158" unique_id=1438717306]
+shape = SubResource("shape159")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall158" unique_id=1891701369]
+mesh = SubResource("back159")
+
+[node name="Wall160" type="StaticBody3D" parent="Arena" unique_id=1646962538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall160" unique_id=453329177]
+shape = SubResource("shape161")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall160" unique_id=625036362]
+mesh = SubResource("back161")
+
+[node name="Wall162" type="StaticBody3D" parent="Arena" unique_id=1991882320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall162" unique_id=1124742217]
+shape = SubResource("shape163")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall162" unique_id=1697089131]
+mesh = SubResource("back163")
+
+[node name="Wall164" type="StaticBody3D" parent="Arena" unique_id=1095633754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall164" unique_id=1542170568]
+shape = SubResource("shape165")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall164" unique_id=1453343249]
+mesh = SubResource("back165")
+
+[node name="Wall166" type="StaticBody3D" parent="Arena" unique_id=1437639536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall166" unique_id=238366501]
+shape = SubResource("shape167")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall166" unique_id=1120984938]
+mesh = SubResource("back167")
+
+[node name="Wall168" type="StaticBody3D" parent="Arena" unique_id=1624921425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall168" unique_id=1867764772]
+shape = SubResource("shape169")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall168" unique_id=1286030376]
+mesh = SubResource("back169")
+
+[node name="Wall170" type="StaticBody3D" parent="Arena" unique_id=3843962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 2.1, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall170" unique_id=292532383]
+shape = SubResource("shape171")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall170" unique_id=891140123]
+mesh = SubResource("back171")
+
+[node name="Wall172" type="StaticBody3D" parent="Arena" unique_id=84568064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.1, 19)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall172" unique_id=1078231502]
+shape = SubResource("shape173")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall172" unique_id=1339452752]
+mesh = SubResource("back173")
+
+[node name="Wall174" type="StaticBody3D" parent="Arena" unique_id=912557707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.1, 19)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall174" unique_id=1029956604]
+shape = SubResource("shape175")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall174" unique_id=973454996]
+mesh = SubResource("back175")
+
+[node name="Wall176" type="StaticBody3D" parent="Arena" unique_id=739522782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.1, 19)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall176" unique_id=1275140568]
+shape = SubResource("shape177")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall176" unique_id=495906326]
+mesh = SubResource("back177")
+
+[node name="Wall178" type="StaticBody3D" parent="Arena" unique_id=887947602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.1, 19)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall178" unique_id=1907419474]
+shape = SubResource("shape179")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall178" unique_id=1674652570]
+mesh = SubResource("back179")
+
+[node name="Wall180" type="StaticBody3D" parent="Arena" unique_id=963350681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1, 24)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall180" unique_id=1130028499]
+shape = SubResource("shape181")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall180" unique_id=1585627804]
+mesh = SubResource("back181")
+
+[node name="Wall182" type="StaticBody3D" parent="Arena" unique_id=2070589231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.1, 24)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall182" unique_id=524448871]
+shape = SubResource("shape183")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall182" unique_id=129878870]
+mesh = SubResource("back183")
+
+[node name="Wall184" type="StaticBody3D" parent="Arena" unique_id=1670554974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.1, 24)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall184" unique_id=1735493032]
+shape = SubResource("shape185")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall184" unique_id=854397149]
+mesh = SubResource("back185")
+
+[node name="Wall186" type="StaticBody3D" parent="Arena" unique_id=960099433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2.1, 24)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall186" unique_id=1438044919]
+shape = SubResource("shape187")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall186" unique_id=1891836127]
+mesh = SubResource("back187")
+
+[node name="Wall188" type="StaticBody3D" parent="Arena" unique_id=152729875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1, 36)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall188" unique_id=591436492]
+shape = SubResource("shape189")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall188" unique_id=327165092]
+mesh = SubResource("back189")
+
+[node name="Wall190" type="StaticBody3D" parent="Arena" unique_id=1725126990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1, 36)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall190" unique_id=1929697624]
+shape = SubResource("shape191")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall190" unique_id=2005680737]
+mesh = SubResource("back191")
+
+[node name="Wall192" type="StaticBody3D" parent="Arena" unique_id=1928458015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.1, 36)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall192" unique_id=324079325]
+shape = SubResource("shape193")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall192" unique_id=1372517993]
+mesh = SubResource("back193")
+
+[node name="Wall194" type="StaticBody3D" parent="Arena" unique_id=792999702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1, 36)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall194" unique_id=1188252968]
+shape = SubResource("shape195")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall194" unique_id=908621619]
+mesh = SubResource("back195")
+
+[node name="Wall196" type="StaticBody3D" parent="Arena" unique_id=1143790664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, -28)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall196" unique_id=1450794407]
+shape = SubResource("shape197")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall196" unique_id=1591418350]
+mesh = SubResource("back197")
+
+[node name="Wall198" type="StaticBody3D" parent="Arena" unique_id=568442799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, -24)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall198" unique_id=1655002873]
+shape = SubResource("shape199")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall198" unique_id=723689926]
+mesh = SubResource("back199")
+
+[node name="Wall200" type="StaticBody3D" parent="Arena" unique_id=245119088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, -20)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall200" unique_id=1810337367]
+shape = SubResource("shape201")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall200" unique_id=1309024783]
+mesh = SubResource("back201")
+
+[node name="Wall202" type="StaticBody3D" parent="Arena" unique_id=1276835285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, -17)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall202" unique_id=2000261543]
+shape = SubResource("shape203")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall202" unique_id=2020267876]
+mesh = SubResource("back203")
+
+[node name="Wall204" type="StaticBody3D" parent="Arena" unique_id=1300147268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, -4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall204" unique_id=1903283809]
+shape = SubResource("shape205")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall204" unique_id=740337625]
+mesh = SubResource("back205")
+
+[node name="Wall206" type="StaticBody3D" parent="Arena" unique_id=1185010290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall206" unique_id=1256152711]
+shape = SubResource("shape207")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall206" unique_id=1089132522]
+mesh = SubResource("back207")
+
+[node name="Wall208" type="StaticBody3D" parent="Arena" unique_id=568141100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, 4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall208" unique_id=1865431359]
+shape = SubResource("shape209")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall208" unique_id=1528075228]
+mesh = SubResource("back209")
+
+[node name="Wall210" type="StaticBody3D" parent="Arena" unique_id=1747489118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, 8)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall210" unique_id=1584218841]
+shape = SubResource("shape211")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall210" unique_id=632181771]
+mesh = SubResource("back211")
+
+[node name="Wall212" type="StaticBody3D" parent="Arena" unique_id=1823149551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2.1, 12)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall212" unique_id=1916920595]
+shape = SubResource("shape213")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall212" unique_id=931997636]
+mesh = SubResource("back213")
+
+[node name="Wall214" type="StaticBody3D" parent="Arena" unique_id=1833707517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1, -14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall214" unique_id=818357475]
+shape = SubResource("shape215")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall214" unique_id=1298977436]
+mesh = SubResource("back215")
+
+[node name="Wall216" type="StaticBody3D" parent="Arena" unique_id=304169179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1, -10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall216" unique_id=1420241311]
+shape = SubResource("shape217")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall216" unique_id=1050725398]
+mesh = SubResource("back217")
+
+[node name="Wall218" type="StaticBody3D" parent="Arena" unique_id=1937002852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1, -7)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall218" unique_id=181368715]
+shape = SubResource("shape219")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall218" unique_id=1026138758]
+mesh = SubResource("back219")
+
+[node name="Wall220" type="StaticBody3D" parent="Arena" unique_id=559615474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1, -14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall220" unique_id=1985278948]
+shape = SubResource("shape221")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall220" unique_id=1909934809]
+mesh = SubResource("back221")
+
+[node name="Wall222" type="StaticBody3D" parent="Arena" unique_id=1043432401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1, -10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall222" unique_id=588389405]
+shape = SubResource("shape223")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall222" unique_id=1697052569]
+mesh = SubResource("back223")
+
+[node name="Wall224" type="StaticBody3D" parent="Arena" unique_id=759358748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1, -7)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall224" unique_id=61070304]
+shape = SubResource("shape225")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall224" unique_id=1956498406]
+mesh = SubResource("back225")
+
+[node name="Wall226" type="StaticBody3D" parent="Arena" unique_id=322630909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1, -14.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall226" unique_id=583165610]
+shape = SubResource("shape227")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall226" unique_id=2126639200]
+mesh = SubResource("back227")
+
+[node name="Wall228" type="StaticBody3D" parent="Arena" unique_id=139563205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.1, -28)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall228" unique_id=1120053624]
+shape = SubResource("shape229")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall228" unique_id=1244637580]
+mesh = SubResource("back229")
+
+[node name="Wall230" type="StaticBody3D" parent="Arena" unique_id=279818009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.1, -25.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall230" unique_id=1027655664]
+shape = SubResource("shape231")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall230" unique_id=1392936975]
+mesh = SubResource("back231")
+
+[node name="Wall232" type="StaticBody3D" parent="Arena" unique_id=320192982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.1, -19)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall232" unique_id=1639041906]
+shape = SubResource("shape233")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall232" unique_id=1221005514]
+mesh = SubResource("back233")
+
+[node name="Wall234" type="StaticBody3D" parent="Arena" unique_id=862901547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.1, -4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall234" unique_id=525776377]
+shape = SubResource("shape235")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall234" unique_id=1973784621]
+mesh = SubResource("back235")
+
+[node name="Wall236" type="StaticBody3D" parent="Arena" unique_id=1574323849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.1, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall236" unique_id=272659665]
+shape = SubResource("shape237")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall236" unique_id=989556760]
+mesh = SubResource("back237")
+
+[node name="Wall238" type="StaticBody3D" parent="Arena" unique_id=630983686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.1, 4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall238" unique_id=1931348502]
+shape = SubResource("shape239")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall238" unique_id=25066353]
+mesh = SubResource("back239")
+
+[node name="Wall240" type="StaticBody3D" parent="Arena" unique_id=1895135423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.1, 12)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall240" unique_id=114221149]
+shape = SubResource("shape241")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall240" unique_id=1115318037]
+mesh = SubResource("back241")
+
+[node name="Wall242" type="StaticBody3D" parent="Arena" unique_id=1108477780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.1, -19)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall242" unique_id=1006610979]
+shape = SubResource("shape243")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall242" unique_id=1046117649]
+mesh = SubResource("back243")
+
+[node name="Wall244" type="StaticBody3D" parent="Arena" unique_id=2009726129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.1, -11)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall244" unique_id=513241060]
+shape = SubResource("shape245")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall244" unique_id=195562837]
+mesh = SubResource("back245")
+
+[node name="Wall246" type="StaticBody3D" parent="Arena" unique_id=1779077411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.1, -7)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall246" unique_id=1794258831]
+shape = SubResource("shape247")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall246" unique_id=904486904]
+mesh = SubResource("back247")
+
+[node name="Wall248" type="StaticBody3D" parent="Arena" unique_id=1470275236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.1, -4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall248" unique_id=711453955]
+shape = SubResource("shape249")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall248" unique_id=1686608019]
+mesh = SubResource("back249")
+
+[node name="Wall250" type="StaticBody3D" parent="Arena" unique_id=263834478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.1, 5.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall250" unique_id=1627701893]
+shape = SubResource("shape251")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall250" unique_id=12187518]
+mesh = SubResource("back251")
+
+[node name="Wall252" type="StaticBody3D" parent="Arena" unique_id=2072211046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.1, 12)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall252" unique_id=389063410]
+shape = SubResource("shape253")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall252" unique_id=1512997722]
+mesh = SubResource("back253")
+
+[node name="Wall254" type="StaticBody3D" parent="Arena" unique_id=1397474032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.1, 16)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall254" unique_id=932509528]
+shape = SubResource("shape255")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall254" unique_id=206346321]
+mesh = SubResource("back255")
+
+[node name="Wall256" type="StaticBody3D" parent="Arena" unique_id=352253366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.1, 18.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall256" unique_id=1094476641]
+shape = SubResource("shape257")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall256" unique_id=1805754506]
+mesh = SubResource("back257")
+
+[node name="Wall258" type="StaticBody3D" parent="Arena" unique_id=1310850601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.1, 26)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall258" unique_id=12930621]
+shape = SubResource("shape259")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall258" unique_id=1820423000]
+mesh = SubResource("back259")
+
+[node name="Wall260" type="StaticBody3D" parent="Arena" unique_id=311221174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.1, 30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall260" unique_id=1104827263]
+shape = SubResource("shape261")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall260" unique_id=29362371]
+mesh = SubResource("back261")
+
+[node name="Wall262" type="StaticBody3D" parent="Arena" unique_id=569536842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.1, 34)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall262" unique_id=851924399]
+shape = SubResource("shape263")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall262" unique_id=1065786307]
+mesh = SubResource("back263")
+
+[node name="Wall264" type="StaticBody3D" parent="Arena" unique_id=322007653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1, -23)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall264" unique_id=1091029860]
+shape = SubResource("shape265")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall264" unique_id=586277576]
+mesh = SubResource("back265")
+
+[node name="Wall266" type="StaticBody3D" parent="Arena" unique_id=1467644975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1, -1)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall266" unique_id=111308993]
+shape = SubResource("shape267")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall266" unique_id=310702291]
+mesh = SubResource("back267")
+
+[node name="Wall268" type="StaticBody3D" parent="Arena" unique_id=777325363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1, 3)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall268" unique_id=1358537202]
+shape = SubResource("shape269")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall268" unique_id=2001097408]
+mesh = SubResource("back269")
+
+[node name="Wall270" type="StaticBody3D" parent="Arena" unique_id=1265795087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1, 21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall270" unique_id=422900520]
+shape = SubResource("shape271")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall270" unique_id=784426936]
+mesh = SubResource("back271")
+
+[node name="Wall272" type="StaticBody3D" parent="Arena" unique_id=2015713767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1, 23.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall272" unique_id=998150149]
+shape = SubResource("shape273")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall272" unique_id=775265762]
+mesh = SubResource("back273")
+
+[node name="Wall274" type="StaticBody3D" parent="Arena" unique_id=1152158904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.1, -1)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall274" unique_id=1254975590]
+shape = SubResource("shape275")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall274" unique_id=210741959]
+mesh = SubResource("back275")
+
+[node name="Wall276" type="StaticBody3D" parent="Arena" unique_id=1669426939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.1, 3)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall276" unique_id=688228652]
+shape = SubResource("shape277")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall276" unique_id=656174593]
+mesh = SubResource("back277")
+
+[node name="Wall278" type="StaticBody3D" parent="Arena" unique_id=146119490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.1, 21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall278" unique_id=1927649375]
+shape = SubResource("shape279")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall278" unique_id=372786608]
+mesh = SubResource("back279")
+
+[node name="Wall280" type="StaticBody3D" parent="Arena" unique_id=1635676392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.1, 23.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall280" unique_id=1295193759]
+shape = SubResource("shape281")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall280" unique_id=548294672]
+mesh = SubResource("back281")
+
+[node name="Wall282" type="StaticBody3D" parent="Arena" unique_id=1062497546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1, -23)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall282" unique_id=1028679155]
+shape = SubResource("shape283")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall282" unique_id=1303109374]
+mesh = SubResource("back283")
+
+[node name="Wall284" type="StaticBody3D" parent="Arena" unique_id=701140360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.1, 26)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall284" unique_id=654684426]
+shape = SubResource("shape285")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall284" unique_id=1089243869]
+mesh = SubResource("back285")
+
+[node name="Wall286" type="StaticBody3D" parent="Arena" unique_id=903680575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.1, 30)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall286" unique_id=1197327229]
+shape = SubResource("shape287")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall286" unique_id=1197820034]
+mesh = SubResource("back287")
+
+[node name="Wall288" type="StaticBody3D" parent="Arena" unique_id=1844639636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.1, 34)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall288" unique_id=297681017]
+shape = SubResource("shape289")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall288" unique_id=1413969655]
+mesh = SubResource("back289")
+
+[node name="Wall290" type="StaticBody3D" parent="Arena" unique_id=1004896467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.1, 5.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall290" unique_id=2010060045]
+shape = SubResource("shape291")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall290" unique_id=1960796797]
+mesh = SubResource("back291")
+
+[node name="Wall292" type="StaticBody3D" parent="Arena" unique_id=77572081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.1, 12)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall292" unique_id=62214788]
+shape = SubResource("shape293")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall292" unique_id=1187281859]
+mesh = SubResource("back293")
+
+[node name="Wall294" type="StaticBody3D" parent="Arena" unique_id=1775350030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.1, 16)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall294" unique_id=484748597]
+shape = SubResource("shape295")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall294" unique_id=1395671768]
+mesh = SubResource("back295")
+
+[node name="Wall296" type="StaticBody3D" parent="Arena" unique_id=2014356977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.1, 18.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall296" unique_id=388847636]
+shape = SubResource("shape297")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall296" unique_id=1933743525]
+mesh = SubResource("back297")
+
+[node name="Wall298" type="StaticBody3D" parent="Arena" unique_id=1846784714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.1, -19)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall298" unique_id=1407338673]
+shape = SubResource("shape299")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall298" unique_id=748768958]
+mesh = SubResource("back299")
+
+[node name="Wall300" type="StaticBody3D" parent="Arena" unique_id=880421922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.1, -11)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall300" unique_id=424859631]
+shape = SubResource("shape301")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall300" unique_id=1465791836]
+mesh = SubResource("back301")
+
+[node name="Wall302" type="StaticBody3D" parent="Arena" unique_id=1321801627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.1, -7)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall302" unique_id=535513139]
+shape = SubResource("shape303")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall302" unique_id=874004952]
+mesh = SubResource("back303")
+
+[node name="Wall304" type="StaticBody3D" parent="Arena" unique_id=98611849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.1, -4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall304" unique_id=1546510045]
+shape = SubResource("shape305")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall304" unique_id=1899467571]
+mesh = SubResource("back305")
+
+[node name="Wall306" type="StaticBody3D" parent="Arena" unique_id=801220264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.1, -28)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall306" unique_id=2091416473]
+shape = SubResource("shape307")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall306" unique_id=1187703442]
+mesh = SubResource("back307")
+
+[node name="Wall308" type="StaticBody3D" parent="Arena" unique_id=1590995261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.1, -25.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall308" unique_id=2024215455]
+shape = SubResource("shape309")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall308" unique_id=909058728]
+mesh = SubResource("back309")
+
+[node name="Wall310" type="StaticBody3D" parent="Arena" unique_id=1207962464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.1, -19)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall310" unique_id=1376646681]
+shape = SubResource("shape311")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall310" unique_id=478356718]
+mesh = SubResource("back311")
+
+[node name="Wall312" type="StaticBody3D" parent="Arena" unique_id=1475178798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.1, -4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall312" unique_id=1395370228]
+shape = SubResource("shape313")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall312" unique_id=2131500624]
+mesh = SubResource("back313")
+
+[node name="Wall314" type="StaticBody3D" parent="Arena" unique_id=893087149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.1, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall314" unique_id=1801584441]
+shape = SubResource("shape315")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall314" unique_id=1548343718]
+mesh = SubResource("back315")
+
+[node name="Wall316" type="StaticBody3D" parent="Arena" unique_id=179572426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.1, 4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall316" unique_id=1557123687]
+shape = SubResource("shape317")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall316" unique_id=1091430116]
+mesh = SubResource("back317")
+
+[node name="Wall318" type="StaticBody3D" parent="Arena" unique_id=989889793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.1, 12)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall318" unique_id=1653198707]
+shape = SubResource("shape319")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall318" unique_id=448001825]
+mesh = SubResource("back319")
+
+[node name="Wall320" type="StaticBody3D" parent="Arena" unique_id=1325839488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1, -14.5)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall320" unique_id=928760513]
+shape = SubResource("shape321")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall320" unique_id=452524888]
+mesh = SubResource("back321")
+
+[node name="Wall322" type="StaticBody3D" parent="Arena" unique_id=1188875551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1, -14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall322" unique_id=1102369681]
+shape = SubResource("shape323")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall322" unique_id=986453583]
+mesh = SubResource("back323")
+
+[node name="Wall324" type="StaticBody3D" parent="Arena" unique_id=1199664670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1, -10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall324" unique_id=671937288]
+shape = SubResource("shape325")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall324" unique_id=1868423188]
+mesh = SubResource("back325")
+
+[node name="Wall326" type="StaticBody3D" parent="Arena" unique_id=863203504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1, -7)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall326" unique_id=777149603]
+shape = SubResource("shape327")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall326" unique_id=1395918430]
+mesh = SubResource("back327")
+
+[node name="Wall328" type="StaticBody3D" parent="Arena" unique_id=1754046011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1, -14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall328" unique_id=1851151929]
+shape = SubResource("shape329")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall328" unique_id=1744755609]
+mesh = SubResource("back329")
+
+[node name="Wall330" type="StaticBody3D" parent="Arena" unique_id=1306178920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1, -10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall330" unique_id=467051165]
+shape = SubResource("shape331")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall330" unique_id=476529574]
+mesh = SubResource("back331")
+
+[node name="Wall332" type="StaticBody3D" parent="Arena" unique_id=1514164838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1, -7)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall332" unique_id=2080024384]
+shape = SubResource("shape333")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall332" unique_id=587112060]
+mesh = SubResource("back333")
+
+[node name="Wall334" type="StaticBody3D" parent="Arena" unique_id=857607871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, -28)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall334" unique_id=1729985002]
+shape = SubResource("shape335")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall334" unique_id=782992442]
+mesh = SubResource("back335")
+
+[node name="Wall336" type="StaticBody3D" parent="Arena" unique_id=1309577228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, -24)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall336" unique_id=923989276]
+shape = SubResource("shape337")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall336" unique_id=246405687]
+mesh = SubResource("back337")
+
+[node name="Wall338" type="StaticBody3D" parent="Arena" unique_id=71082145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, -20)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall338" unique_id=570609109]
+shape = SubResource("shape339")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall338" unique_id=1854208344]
+mesh = SubResource("back339")
+
+[node name="Wall340" type="StaticBody3D" parent="Arena" unique_id=1912026361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, -17)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall340" unique_id=1862001077]
+shape = SubResource("shape341")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall340" unique_id=111397449]
+mesh = SubResource("back341")
+
+[node name="Wall342" type="StaticBody3D" parent="Arena" unique_id=2002000495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, -4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall342" unique_id=1020473772]
+shape = SubResource("shape343")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall342" unique_id=1083630662]
+mesh = SubResource("back343")
+
+[node name="Wall344" type="StaticBody3D" parent="Arena" unique_id=1763921562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall344" unique_id=1847553603]
+shape = SubResource("shape345")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall344" unique_id=740074481]
+mesh = SubResource("back345")
+
+[node name="Wall346" type="StaticBody3D" parent="Arena" unique_id=1670857756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, 4)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall346" unique_id=225075680]
+shape = SubResource("shape347")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall346" unique_id=1626403691]
+mesh = SubResource("back347")
+
+[node name="Wall348" type="StaticBody3D" parent="Arena" unique_id=1367100489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, 8)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall348" unique_id=1123175500]
+shape = SubResource("shape349")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall348" unique_id=751503397]
+mesh = SubResource("back349")
+
+[node name="Wall350" type="StaticBody3D" parent="Arena" unique_id=1913235455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.1, 12)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Wall350" unique_id=461563193]
+shape = SubResource("shape351")
+
+[node name="Backing" type="MeshInstance3D" parent="Arena/Wall350" unique_id=210567185]
+mesh = SubResource("back351")
+
+[node name="Light0" type="OmniLight3D" parent="Arena" unique_id=1514206273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 30)
+light_color = Color(0.68, 0.48, 0.57, 1)
+light_energy = 0.95
+omni_range = 20.0
+
+[node name="Sign0" type="Label3D" parent="Arena" unique_id=134855293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 25)
+pixel_size = 0.007
+billboard = 1
+modulate = Color(0.5, 0.9, 1, 1)
+text = "DESCONTAMINACIÓN"
+font_size = 64
+
+[node name="Mesh353" type="MeshInstance3D" parent="Arena" unique_id=235820733]
+transform = Transform3D(1.34526, 0, 0, 0, 1.00455, 0, 0, 0, 1.42233, 6, 0.0012, 28.90755)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Computer")
+
+[node name="Light1" type="OmniLight3D" parent="Arena" unique_id=493100706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 12)
+light_color = Color(0.68, 0.48, 0.57, 1)
+light_energy = 0.95
+omni_range = 20.0
+
+[node name="Sign1" type="Label3D" parent="Arena" unique_id=361576085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 6)
+pixel_size = 0.007
+billboard = 1
+modulate = Color(0.5, 0.9, 1, 1)
+text = "CUARENTENA"
+font_size = 64
+
+[node name="Cover353" type="StaticBody3D" parent="Arena" unique_id=2063454166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.65, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover353" unique_id=1533997297]
+shape = SubResource("shape354")
+
+[node name="Mesh355" type="MeshInstance3D" parent="Arena/Cover353" unique_id=1665214212]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="Cover355" type="StaticBody3D" parent="Arena" unique_id=1167473321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.65, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover355" unique_id=1418929804]
+shape = SubResource("shape356")
+
+[node name="Mesh357" type="MeshInstance3D" parent="Arena/Cover355" unique_id=576380449]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="Light2" type="OmniLight3D" parent="Arena" unique_id=665799159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 3.6, 4)
+light_color = Color(0.68, 0.48, 0.57, 1)
+light_energy = 0.95
+omni_range = 20.0
+
+[node name="Sign2" type="Label3D" parent="Arena" unique_id=1331083426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 3.1, -5)
+pixel_size = 0.007
+billboard = 1
+modulate = Color(0.5, 0.9, 1, 1)
+text = "CULTIVOS OESTE"
+font_size = 64
+
+[node name="Cover357" type="StaticBody3D" parent="Arena" unique_id=1750263029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.65, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover357" unique_id=296554824]
+shape = SubResource("shape358")
+
+[node name="Mesh359" type="MeshInstance3D" parent="Arena/Cover357" unique_id=126282875]
+transform = Transform3D(3.5444, 0, 0, 0, 1.17903, 0, 0, 0, 3.38352, 0, -0.65964, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Barrel_Large")
+
+[node name="Cover359" type="StaticBody3D" parent="Arena" unique_id=1689642973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.65, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover359" unique_id=996613940]
+shape = SubResource("shape360")
+
+[node name="Mesh361" type="MeshInstance3D" parent="Arena/Cover359" unique_id=1985940652]
+transform = Transform3D(3.5444, 0, 0, 0, 1.17903, 0, 0, 0, 3.38352, 0, -0.65964, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Barrel_Large")
+
+[node name="Light3" type="OmniLight3D" parent="Arena" unique_id=933748666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.6, 4)
+light_color = Color(0.68, 0.48, 0.57, 1)
+light_energy = 0.95
+omni_range = 20.0
+
+[node name="Sign3" type="Label3D" parent="Arena" unique_id=566994718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.1, -5)
+pixel_size = 0.007
+billboard = 1
+modulate = Color(0.5, 0.9, 1, 1)
+text = "CULTIVOS ESTE"
+font_size = 64
+
+[node name="Cover361" type="StaticBody3D" parent="Arena" unique_id=750982064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.65, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover361" unique_id=2017127046]
+shape = SubResource("shape362")
+
+[node name="Mesh363" type="MeshInstance3D" parent="Arena/Cover361" unique_id=2046289849]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="Cover363" type="StaticBody3D" parent="Arena" unique_id=1015587686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0.65, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover363" unique_id=2141785893]
+shape = SubResource("shape364")
+
+[node name="Mesh365" type="MeshInstance3D" parent="Arena/Cover363" unique_id=952572326]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="Light4" type="OmniLight3D" parent="Arena" unique_id=893262664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, -12)
+light_color = Color(0.68, 0.48, 0.57, 1)
+light_energy = 0.95
+omni_range = 20.0
+
+[node name="Sign4" type="Label3D" parent="Arena" unique_id=1083957067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, -20)
+pixel_size = 0.007
+billboard = 1
+modulate = Color(0.5, 0.9, 1, 1)
+text = "INCUBADORA"
+font_size = 64
+
+[node name="Cover365" type="StaticBody3D" parent="Arena" unique_id=862816403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.65, -10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover365" unique_id=691852924]
+shape = SubResource("shape366")
+
+[node name="Mesh367" type="MeshInstance3D" parent="Arena/Cover365" unique_id=135926687]
+transform = Transform3D(3.5444, 0, 0, 0, 1.17903, 0, 0, 0, 3.38352, 0, -0.65964, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Barrel_Large")
+
+[node name="Cover367" type="StaticBody3D" parent="Arena" unique_id=446937624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.65, -10)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover367" unique_id=842441960]
+shape = SubResource("shape368")
+
+[node name="Mesh369" type="MeshInstance3D" parent="Arena/Cover367" unique_id=1368964266]
+transform = Transform3D(3.5444, 0, 0, 0, 1.17903, 0, 0, 0, 3.38352, 0, -0.65964, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Barrel_Large")
+
+[node name="Light5" type="OmniLight3D" parent="Arena" unique_id=512155854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 3.6, -23)
+light_color = Color(0.68, 0.48, 0.57, 1)
+light_energy = 0.95
+omni_range = 20.0
+
+[node name="Sign5" type="Label3D" parent="Arena" unique_id=298655534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 3.1, -29)
+pixel_size = 0.007
+billboard = 1
+modulate = Color(0.5, 0.9, 1, 1)
+text = "PURGA BIOLÓGICA"
+font_size = 64
+
+[node name="Cover369" type="StaticBody3D" parent="Arena" unique_id=246802471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.65, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover369" unique_id=1857828173]
+shape = SubResource("shape370")
+
+[node name="Mesh371" type="MeshInstance3D" parent="Arena/Cover369" unique_id=1914236214]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="Cover371" type="StaticBody3D" parent="Arena" unique_id=235335492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.65, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover371" unique_id=1416010416]
+shape = SubResource("shape372")
+
+[node name="Mesh373" type="MeshInstance3D" parent="Arena/Cover371" unique_id=1092149185]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="Light6" type="OmniLight3D" parent="Arena" unique_id=1977499653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.6, -23)
+light_color = Color(0.68, 0.48, 0.57, 1)
+light_energy = 0.95
+omni_range = 20.0
+
+[node name="Sign6" type="Label3D" parent="Arena" unique_id=541818745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.1, -29)
+pixel_size = 0.007
+billboard = 1
+modulate = Color(0.5, 0.9, 1, 1)
+text = "EXTRACCIÓN MÉDICA"
+font_size = 64
+
+[node name="Cover373" type="StaticBody3D" parent="Arena" unique_id=992029044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.65, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover373" unique_id=410615704]
+shape = SubResource("shape374")
+
+[node name="Mesh375" type="MeshInstance3D" parent="Arena/Cover373" unique_id=2019998379]
+transform = Transform3D(3.5444, 0, 0, 0, 1.17903, 0, 0, 0, 3.38352, 0, -0.65964, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Barrel_Large")
+
+[node name="Cover375" type="StaticBody3D" parent="Arena" unique_id=1350018694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0.65, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Cover375" unique_id=301806769]
+shape = SubResource("shape376")
+
+[node name="Mesh377" type="MeshInstance3D" parent="Arena/Cover375" unique_id=1886385259]
+transform = Transform3D(3.5444, 0, 0, 0, 1.17903, 0, 0, 0, 3.38352, 0, -0.65964, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Barrel_Large")
+
+[node name="Ceilings" type="Node3D" parent="Arena" unique_id=1940868534]
+
+[node name="Roof0" type="StaticBody3D" parent="Arena/Ceilings" unique_id=370344004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.32, 30)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof0" unique_id=2017166133]
+mesh = SubResource("roof_mesh0")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof0" unique_id=513694867]
+shape = SubResource("roof_shape0")
+
+[node name="Roof1" type="StaticBody3D" parent="Arena/Ceilings" unique_id=567571901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.32, 12)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof1" unique_id=780717374]
+mesh = SubResource("roof_mesh1")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof1" unique_id=419846297]
+shape = SubResource("roof_shape1")
+
+[node name="Roof2" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1223473225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4.32, 4)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof2" unique_id=767475068]
+mesh = SubResource("roof_mesh2")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof2" unique_id=2013393547]
+shape = SubResource("roof_shape2")
+
+[node name="Roof3" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1536632677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 4.32, 4)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof3" unique_id=1981372300]
+mesh = SubResource("roof_mesh3")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof3" unique_id=1984562186]
+shape = SubResource("roof_shape3")
+
+[node name="Roof4" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1163320877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.32, -12)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof4" unique_id=1698114916]
+mesh = SubResource("roof_mesh4")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof4" unique_id=1742111592]
+shape = SubResource("roof_shape4")
+
+[node name="Roof5" type="StaticBody3D" parent="Arena/Ceilings" unique_id=769323760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4.32, -23)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof5" unique_id=1264768217]
+mesh = SubResource("roof_mesh5")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof5" unique_id=2023164637]
+shape = SubResource("roof_shape5")
+
+[node name="Roof6" type="StaticBody3D" parent="Arena/Ceilings" unique_id=325623329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 4.32, -23)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof6" unique_id=1494487801]
+mesh = SubResource("roof_mesh6")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof6" unique_id=80784478]
+shape = SubResource("roof_shape6")
+
+[node name="Roof7" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1210835174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.32, 22)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof7" unique_id=1847134498]
+mesh = SubResource("roof_mesh7")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof7" unique_id=945434390]
+shape = SubResource("roof_shape7")
+
+[node name="Roof8" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1937917816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.32, 8)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof8" unique_id=1013490203]
+mesh = SubResource("roof_mesh8")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof8" unique_id=1776980944]
+shape = SubResource("roof_shape8")
+
+[node name="Roof9" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1330971019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.32, 8)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof9" unique_id=45497506]
+mesh = SubResource("roof_mesh9")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof9" unique_id=153715692]
+shape = SubResource("roof_shape9")
+
+[node name="Roof10" type="StaticBody3D" parent="Arena/Ceilings" unique_id=652836255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4.32, -10)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof10" unique_id=1150444493]
+mesh = SubResource("roof_mesh10")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof10" unique_id=1653567466]
+shape = SubResource("roof_shape10")
+
+[node name="Roof11" type="StaticBody3D" parent="Arena/Ceilings" unique_id=686901435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 4.32, -10)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof11" unique_id=1373721419]
+mesh = SubResource("roof_mesh11")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof11" unique_id=2092883474]
+shape = SubResource("roof_shape11")
+
+[node name="Roof12" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1517360396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.32, -15)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof12" unique_id=1056915112]
+mesh = SubResource("roof_mesh12")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof12" unique_id=940419625]
+shape = SubResource("roof_shape12")
+
+[node name="Roof13" type="StaticBody3D" parent="Arena/Ceilings" unique_id=397112708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.32, -15)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof13" unique_id=1044488131]
+mesh = SubResource("roof_mesh13")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof13" unique_id=1298555262]
+shape = SubResource("roof_shape13")
+
+[node name="Roof14" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1304976924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.32, 0)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof14" unique_id=1020060373]
+mesh = SubResource("roof_mesh14")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof14" unique_id=643302862]
+shape = SubResource("roof_shape14")
+
+[node name="Roof15" type="StaticBody3D" parent="Arena/Ceilings" unique_id=670485299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.32, -23)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof15" unique_id=1071869273]
+mesh = SubResource("roof_mesh15")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof15" unique_id=79093472]
+shape = SubResource("roof_shape15")
+
+[node name="Roof16" type="StaticBody3D" parent="Arena/Ceilings" unique_id=1440053954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.32, -23)
+
+[node name="Visual" type="MeshInstance3D" parent="Arena/Ceilings/Roof16" unique_id=963038485]
+mesh = SubResource("roof_mesh16")
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/Ceilings/Roof16" unique_id=516250671]
+shape = SubResource("roof_shape16")
+
+[node name="DoubleCover355Upper" type="StaticBody3D" parent="Arena" unique_id=1590581739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.95, 14)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/DoubleCover355Upper" unique_id=504871124]
+shape = SubResource("shape356")
+
+[node name="Mesh357" type="MeshInstance3D" parent="Arena/DoubleCover355Upper" unique_id=2098375422]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="DoubleCover361Upper" type="StaticBody3D" parent="Arena" unique_id=100772620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1.95, 6)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/DoubleCover361Upper" unique_id=1096038480]
+shape = SubResource("shape362")
+
+[node name="Mesh363" type="MeshInstance3D" parent="Arena/DoubleCover361Upper" unique_id=445980541]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="DoubleCover371Upper" type="StaticBody3D" parent="Arena" unique_id=1567233718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1.95, -21)
+
+[node name="Collision" type="CollisionShape3D" parent="Arena/DoubleCover371Upper" unique_id=1595080553]
+shape = SubResource("shape372")
+
+[node name="Mesh373" type="MeshInstance3D" parent="Arena/DoubleCover371Upper" unique_id=544588944]
+transform = Transform3D(1.8, 0, 0, 0, 1.3, 0, 0, 0, 1.8, 0, 0, 0)
+material_override = SubResource("mat1")
+mesh = ExtResource("Prop_Crate3")
+
+[node name="MissionPoints" type="Node3D" parent="." unique_id=609765037]
+
+[node name="Objective0" type="Marker3D" parent="MissionPoints" unique_id=909293966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.1, 8)
+
+[node name="Objective1" type="Marker3D" parent="MissionPoints" unique_id=1876095600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 12)
+
+[node name="Objective2" type="Marker3D" parent="MissionPoints" unique_id=863764777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.1, 0)
+
+[node name="Objective3" type="Marker3D" parent="MissionPoints" unique_id=794046039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.1, 0)
+
+[node name="Objective4" type="Marker3D" parent="MissionPoints" unique_id=285888742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -15)
+
+[node name="Objective5" type="Marker3D" parent="MissionPoints" unique_id=274999828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.1, -25)
+
+[node name="Objective6" type="Marker3D" parent="MissionPoints" unique_id=327423164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0.1, -25)
+
+[node name="GrenadePickup" type="Marker3D" parent="MissionPoints" unique_id=1424046380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.1, -26)
+
+[node name="Supply0" type="Marker3D" parent="MissionPoints" unique_id=510855175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0.1, -20)
+
+[node name="Supply1" type="Marker3D" parent="MissionPoints" unique_id=3474514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.1, -20)
+
+[node name="Supply2" type="Marker3D" parent="MissionPoints" unique_id=567604543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, -10)
+
+[node name="Player" parent="." unique_id=1887733208 instance=ExtResource("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 32)
+
+[node name="Enemy0" parent="." unique_id=1895723250 instance=ExtResource("roster_9")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.1, 12)
+max_health = 95
+attack_damage = 7
+move_speed = 1.8
+attack_interval = 2.6
+
+[node name="Enemy1" parent="." unique_id=306411600 instance=ExtResource("roster_8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.1, 4)
+max_health = 100
+attack_damage = 8
+move_speed = 2.1
+attack_interval = 2.6
+
+[node name="Enemy2" parent="." unique_id=223644891 instance=ExtResource("roster_16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0.1, 4)
+max_health = 105
+attack_damage = 9
+move_speed = 2.4
+attack_interval = 2.6
+
+[node name="Enemy3" parent="." unique_id=1823829519 instance=ExtResource("roster_4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.1, -12)
+max_health = 110
+attack_damage = 10
+move_speed = 1.8
+attack_interval = 2.6
+
+[node name="Enemy4" parent="." unique_id=1437873238 instance=ExtResource("roster_13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.1, -23)
+max_health = 115
+attack_damage = 11
+move_speed = 2.1
+attack_interval = 2.6
+
+[node name="Enemy5" parent="." unique_id=2099090934 instance=ExtResource("roster_5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.1, -23)
+max_health = 120
+attack_damage = 12
+move_speed = 2.4
+attack_interval = 2.6
+
+[node name="Enemy6" parent="." unique_id=2065481546 instance=ExtResource("roster_1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.1, 7)
+max_health = 125
+attack_damage = 7
+move_speed = 1.8
+attack_interval = 2.6
+
+[node name="Enemy7" parent="." unique_id=938005213 instance=ExtResource("roster_3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.1, 7)
+max_health = 130
+move_speed = 2.1
+attack_interval = 2.6
+
+[node name="HUD" parent="." unique_id=534613994 instance=ExtResource("hud")]
+
+[node name="UpgradeScreen" parent="." unique_id=1780166226 instance=ExtResource("upgrades")]
+visible = false

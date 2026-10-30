@@ -1,0 +1,862 @@
+[gd_scene format=3 uid="uid://cnyx3q4bl5a3o"]
+
+[ext_resource type="Script" uid="uid://fuyl2c4n7iqx" path="res://scripts/ui/game_hud.gd" id="2_hqnrr"]
+[ext_resource type="Theme" uid="uid://c3vufyfwed6w8" path="res://assets/ui_theme.tres" id="menu_theme"]
+[ext_resource type="Script" uid="uid://dg15a35w2kxnt" path="res://scripts/ui/touch_controls.gd" id="touch_controls"]
+
+[sub_resource type="Shader" id="Shader_stasis_cloud"]
+code = "shader_type canvas_item;
+
+uniform vec3 cloud_color = vec3(0.23, 0.54, 0.98);
+uniform float cloud_opacity = 0.17;
+uniform float cloud_size = 0.29;
+
+float hash_value(vec2 p) {
+	return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+}
+
+float noise_value(vec2 p) {
+	vec2 cell = floor(p);
+	vec2 local = fract(p);
+	local = local * local * (3.0 - 2.0 * local);
+	float a = hash_value(cell);
+	float b = hash_value(cell + vec2(1.0, 0.0));
+	float c = hash_value(cell + vec2(0.0, 1.0));
+	float d = hash_value(cell + vec2(1.0, 1.0));
+	return mix(mix(a, b, local.x), mix(c, d, local.x), local.y);
+}
+
+float cloud_noise(vec2 p) {
+	float value = 0.0;
+	float amplitude = 0.5;
+	for (int octave = 0; octave < 3; octave++) {
+		value += noise_value(p) * amplitude;
+		p = p * 2.03 + vec2(13.1, 7.7);
+		amplitude *= 0.5;
+	}
+	return value;
+}
+
+void fragment() {
+	float edge = min(min(UV.x, 1.0 - UV.x), min(UV.y, 1.0 - UV.y));
+	float edge_fog = 1.0 - smoothstep(0.01, cloud_size, edge);
+	float clouds = cloud_noise(UV * vec2(9.0, 5.0) + vec2(TIME * 0.08, -TIME * 0.05));
+	float alpha = edge_fog * mix(0.55, 1.0, clouds) * cloud_opacity;
+	COLOR = vec4(cloud_color, alpha);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stasis_cloud"]
+shader = SubResource("Shader_stasis_cloud")
+shader_parameter/cloud_color = Vector3(0.23, 0.54, 0.98)
+shader_parameter/cloud_opacity = 0.17
+shader_parameter/cloud_size = 0.29
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_low_health_cloud"]
+shader = SubResource("Shader_stasis_cloud")
+shader_parameter/cloud_color = Vector3(0.94, 0.12, 0.2)
+shader_parameter/cloud_opacity = 0.08
+shader_parameter/cloud_size = 0.29
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bo48s"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.025, 0.045, 0.075, 0.88)
+border_width_left = 2
+border_width_top = 1
+border_color = Color(0.47843137, 0.8627451, 0.90588236, 0.65)
+corner_radius_top_left = 8
+corner_radius_top_right = 3
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qguk"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.025, 0.045, 0.075, 0.88)
+border_width_left = 2
+border_width_top = 1
+border_color = Color(0.47843137, 0.8627451, 0.90588236, 0.65)
+corner_radius_top_left = 8
+corner_radius_top_right = 3
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_136eg"]
+bg_color = Color(0.16, 0.23, 0.29, 0.8)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oj5la"]
+bg_color = Color(0.54901963, 0.8392157, 0.6901961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gss2c"]
+bg_color = Color(0.16, 0.23, 0.29, 0.8)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h022r"]
+bg_color = Color(0.47843137, 0.8627451, 0.90588236, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jqwt"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.025, 0.045, 0.075, 0.88)
+border_width_left = 2
+border_width_top = 1
+border_color = Color(0.9411765, 0.74509805, 0.4627451, 0.65)
+corner_radius_top_left = 8
+corner_radius_top_right = 3
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kicr4"]
+bg_color = Color(0.16, 0.23, 0.29, 0.8)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mj13f"]
+bg_color = Color(0.47843137, 0.8627451, 0.90588236, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu4jf"]
+content_margin_left = 30.0
+content_margin_top = 25.0
+content_margin_right = 30.0
+content_margin_bottom = 25.0
+bg_color = Color(0.065, 0.075, 0.135, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.56, 0.44, 0.72, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h1do"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.025, 0.045, 0.075, 0.88)
+border_width_left = 2
+border_width_top = 1
+border_color = Color(0.9411765, 0.74509805, 0.4627451, 0.65)
+corner_radius_top_left = 8
+corner_radius_top_right = 3
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="TouchButtonStyle"]
+bg_color = Color(0.027, 0.082, 0.133, 0.72)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33, 0.85, 0.87, 0.9)
+corner_radius_top_left = 54
+corner_radius_top_right = 54
+corner_radius_bottom_right = 54
+corner_radius_bottom_left = 54
+
+[sub_resource type="StyleBoxFlat" id="TouchJoystickStyle"]
+bg_color = Color(0.027, 0.082, 0.133, 0.42)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33, 0.85, 0.87, 0.75)
+corner_radius_top_left = 88
+corner_radius_top_right = 88
+corner_radius_bottom_right = 88
+corner_radius_bottom_left = 88
+
+[sub_resource type="StyleBoxFlat" id="TouchJoystickKnobStyle"]
+bg_color = Color(0.33, 0.85, 0.87, 0.36)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.93, 0.94, 0.8)
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+
+[node name="HUD" type="CanvasLayer" unique_id=1427679062]
+
+[node name="Interface" type="Control" parent="." unique_id=1834917962]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("menu_theme")
+
+[node name="DamageOverlay" type="ColorRect" parent="Interface" unique_id=411699650]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.9, 0.08, 0.12, 0)
+
+[node name="StasisFrame" type="ColorRect" parent="Interface" unique_id=1412555446]
+visible = false
+z_index = 20
+material = SubResource("ShaderMaterial_stasis_cloud")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LowHealthCloud" type="ColorRect" parent="Interface" unique_id=96360459]
+visible = false
+z_index = 19
+material = SubResource("ShaderMaterial_low_health_cloud")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Heading" type="Label" parent="Interface" unique_id=1029352848]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 25.0
+offset_right = 32.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.3882353, 0.89411765, 0.9411765, 1)
+theme_override_font_sizes/font_size = 18
+text = "SECTOR 07 / NIVEL 1 / LABORATORIO"
+
+[node name="Stats" type="Label" parent="Interface" unique_id=65191467]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 66.0
+offset_right = 32.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 18
+text = "PV 100/100 · ESCUDO 0 · BAJAS 0
+PISTOLA 12/12 · RESERVA 24 · GRANADAS 3"
+
+[node name="Regeneration" type="Label" parent="Interface" unique_id=1427066045]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 119.0
+offset_right = 32.0
+offset_bottom = 119.0
+theme_override_colors/font_color = Color(0.5176471, 0.9372549, 0.69803923, 1)
+theme_override_font_sizes/font_size = 17
+
+[node name="Controls" type="Label" parent="Interface" unique_id=965696273]
+visible = false
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -44.0
+offset_right = 1248.0
+offset_bottom = -14.0
+theme_override_font_sizes/font_size = 16
+text = "WASD: mover · RATÓN: apuntar · CLIC: disparar · R: recargar · SHIFT: correr · ESPACIO: saltar · ESC: pausa"
+
+[node name="Crosshair" type="Label" parent="Interface" unique_id=638080498]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -20.0
+offset_right = 15.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 28
+text = "+"
+
+[node name="GameHUD" type="Control" parent="Interface" unique_id=479861138]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("2_hqnrr")
+
+[node name="SectorInstrument" type="PanelContainer" parent="Interface/GameHUD" unique_id=800038640]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 312.0
+offset_bottom = 94.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bo48s")
+
+[node name="Content" type="VBoxContainer" parent="Interface/GameHUD/SectorInstrument" unique_id=756526662]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="SectorCode" type="Label" parent="Interface/GameHUD/SectorInstrument/Content" unique_id=566777397]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.47843137, 0.8627451, 0.90588236, 1)
+theme_override_font_sizes/font_size = 11
+text = "SECTOR 07 / 01"
+
+[node name="SectorTitle" type="Label" parent="Interface/GameHUD/SectorInstrument/Content" unique_id=734563134]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88235295, 0.91764706, 0.9411765, 1)
+theme_override_font_sizes/font_size = 17
+text = "LABORATORIO"
+
+[node name="Telemetry" type="Label" parent="Interface/GameHUD/SectorInstrument/Content" unique_id=1967721859]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6039216, 0.67058825, 0.7294118, 1)
+theme_override_font_sizes/font_size = 12
+text = "BAJAS 00    /    00:00"
+
+[node name="VitalsInstrument" type="PanelContainer" parent="Interface/GameHUD" unique_id=1194506861]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -143.0
+offset_right = 322.0
+offset_bottom = -22.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qguk")
+
+[node name="Content" type="VBoxContainer" parent="Interface/GameHUD/VitalsInstrument" unique_id=746688954]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="HealthRow" type="HBoxContainer" parent="Interface/GameHUD/VitalsInstrument/Content" unique_id=1107667356]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Interface/GameHUD/VitalsInstrument/Content/HealthRow" unique_id=1655181938]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6039216, 0.67058825, 0.7294118, 1)
+theme_override_font_sizes/font_size = 11
+text = "VITALIDAD"
+
+[node name="Value" type="Label" parent="Interface/GameHUD/VitalsInstrument/Content/HealthRow" unique_id=526512308]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 23
+text = "100 / 100"
+
+[node name="HealthBar" type="ProgressBar" parent="Interface/GameHUD/VitalsInstrument/Content" unique_id=1896613153]
+custom_minimum_size = Vector2(0, 7)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_136eg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oj5la")
+value = 100.0
+show_percentage = false
+
+[node name="ShieldRow" type="HBoxContainer" parent="Interface/GameHUD/VitalsInstrument/Content" unique_id=1612583203]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Interface/GameHUD/VitalsInstrument/Content/ShieldRow" unique_id=58624689]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6039216, 0.67058825, 0.7294118, 1)
+theme_override_font_sizes/font_size = 11
+text = "ESCUDO"
+
+[node name="Value" type="Label" parent="Interface/GameHUD/VitalsInstrument/Content/ShieldRow" unique_id=1536957542]
+modulate = Color(1, 1, 1, 0.55)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.47843137, 0.8627451, 0.90588236, 1)
+theme_override_font_sizes/font_size = 13
+text = "SIN MÓDULO"
+
+[node name="ShieldBar" type="ProgressBar" parent="Interface/GameHUD/VitalsInstrument/Content" unique_id=869455352]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_gss2c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h022r")
+max_value = 1.0
+show_percentage = false
+
+[node name="Recovery" type="Label" parent="Interface/GameHUD/VitalsInstrument/Content" unique_id=728235563]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.54901963, 0.8392157, 0.6901961, 1)
+theme_override_font_sizes/font_size = 11
+text = "ESTADO ESTABLE"
+
+[node name="ArsenalInstrument" type="PanelContainer" parent="Interface/GameHUD" unique_id=1320015945]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -203.0
+offset_right = -22.0
+offset_bottom = -22.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jqwt")
+
+[node name="Content" type="VBoxContainer" parent="Interface/GameHUD/ArsenalInstrument" unique_id=288011079]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="WeaponRow" type="HBoxContainer" parent="Interface/GameHUD/ArsenalInstrument/Content" unique_id=873425057]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Interface/GameHUD/ArsenalInstrument/Content/WeaponRow" unique_id=1799587660]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.47843137, 0.8627451, 0.90588236, 1)
+theme_override_font_sizes/font_size = 15
+text = "PISTOLA"
+
+[node name="State" type="Label" parent="Interface/GameHUD/ArsenalInstrument/Content/WeaponRow" unique_id=2106084036]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9411765, 0.74509805, 0.4627451, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="AmmoRow" type="HBoxContainer" parent="Interface/GameHUD/ArsenalInstrument/Content" unique_id=1457604186]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Ammunition" type="Label" parent="Interface/GameHUD/ArsenalInstrument/Content/AmmoRow" unique_id=2126961224]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 33
+text = "12 / 12"
+
+[node name="Reserve" type="Label" parent="Interface/GameHUD/ArsenalInstrument/Content/AmmoRow" unique_id=319290034]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6039216, 0.67058825, 0.7294118, 1)
+theme_override_font_sizes/font_size = 12
+text = "RESERVA
+024"
+vertical_alignment = 1
+
+[node name="AmmoBar" type="ProgressBar" parent="Interface/GameHUD/ArsenalInstrument/Content" unique_id=451619814]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_kicr4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mj13f")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Separator" type="HSeparator" parent="Interface/GameHUD/ArsenalInstrument/Content" unique_id=2139996273]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="GrenadeRow" type="HBoxContainer" parent="Interface/GameHUD/ArsenalInstrument/Content" unique_id=1902077029]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Type" type="Label" parent="Interface/GameHUD/ArsenalInstrument/Content/GrenadeRow" unique_id=1693881139]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.74509805, 0.4627451, 1)
+theme_override_font_sizes/font_size = 13
+text = "BÁSICA · 3"
+autowrap_mode = 3
+
+[node name="CycleKey" type="Label" parent="Interface/GameHUD/ArsenalInstrument/Content/GrenadeRow" unique_id=292969800]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6039216, 0.67058825, 0.7294118, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="GrenadeStocks" type="Label" parent="Interface/GameHUD/ArsenalInstrument/Content" unique_id=432563546]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6039216, 0.67058825, 0.7294118, 1)
+theme_override_font_sizes/font_size = 11
+text = "BÁS. 3"
+
+[node name="PauseMenu" type="PanelContainer" parent="Interface" unique_id=2070762197]
+visible = false
+z_index = 100
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -170.0
+offset_right = 220.0
+offset_bottom = 170.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bu4jf")
+
+[node name="Actions" type="VBoxContainer" parent="Interface/PauseMenu" unique_id=687555518]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MenuTitle" type="Label" parent="Interface/PauseMenu/Actions" unique_id=487768252]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.63, 0.96, 1)
+theme_override_font_sizes/font_size = 26
+text = "MISIÓN EN PAUSA"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Interface/PauseMenu/Actions" unique_id=67126326]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53, 0.83, 0.71, 1)
+text = "Continuar"
+
+[node name="RetryCheckpoint" type="Button" parent="Interface/PauseMenu/Actions" unique_id=778718831]
+layout_mode = 2
+text = "Reintentar desde checkpoint"
+
+[node name="Restart" type="Button" parent="Interface/PauseMenu/Actions" unique_id=2118895809]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.76, 0.42, 1)
+text = "Reiniciar misión"
+
+[node name="Quit" type="Button" parent="Interface/PauseMenu/Actions" unique_id=1908144749]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.58, 0.58, 1)
+text = "Salir del juego"
+
+[node name="Home" type="Button" parent="Interface/PauseMenu/Actions" unique_id=1352567046]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.87, 0.91, 1)
+text = "Volver a Inicio"
+
+[node name="NextLevel" type="Button" parent="Interface/PauseMenu/Actions" unique_id=161969503]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Siguiente nivel"
+
+[node name="TouchControls" type="Control" parent="Interface" unique_id=904954192]
+z_index = 30
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("touch_controls")
+
+[node name="Joystick" type="Panel" parent="Interface/TouchControls"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -196.0
+offset_right = 194.0
+offset_bottom = -20.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("TouchJoystickStyle")
+
+[node name="Knob" type="Panel" parent="Interface/TouchControls/Joystick"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 54.0
+offset_right = 122.0
+offset_bottom = 122.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("TouchJoystickKnobStyle")
+
+[node name="ShootButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -222.0
+offset_top = -190.0
+offset_right = -118.0
+offset_bottom = -86.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.95, 0.96, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "FUEGO"
+
+[node name="JumpButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -306.0
+offset_top = -174.0
+offset_right = -230.0
+offset_bottom = -98.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.65, 0.91, 0.76, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "SALTO"
+
+[node name="MeleeButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -278.0
+offset_right = -134.0
+offset_bottom = -202.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.55, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "CUCHILLO"
+
+[node name="GrenadeButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -78.0
+offset_right = -134.0
+offset_bottom = -2.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.81, 0.73, 0.95, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "GRANADA"
+
+[node name="ReloadButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -278.0
+offset_right = -18.0
+offset_bottom = -202.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.70, 0.87, 0.98, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "RECARGA"
+
+[node name="SprintButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -174.0
+offset_right = -18.0
+offset_bottom = -98.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.81, 0.90, 0.64, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "CORRER"
+
+[node name="WeaponButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -306.0
+offset_top = -278.0
+offset_right = -230.0
+offset_bottom = -202.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.77, 0.84, 0.97, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "CAMBIAR"
+
+[node name="AimButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -306.0
+offset_top = -78.0
+offset_right = -230.0
+offset_bottom = -2.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.67, 0.91, 0.89, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "MIRA"
+
+[node name="InteractButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(248, 64)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -268.0
+offset_top = 154.0
+offset_right = -20.0
+offset_bottom = 218.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.86, 0.58, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "PULSA PARA TOMAR"
+
+[node name="PauseButton" type="Button" parent="Interface/TouchControls"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 112.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.96, 0.99, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("TouchButtonStyle")
+theme_override_styles/hover = SubResource("TouchButtonStyle")
+theme_override_styles/pressed = SubResource("TouchButtonStyle")
+text = "Ⅱ"
+
+[node name="MissionPanel" type="PanelContainer" parent="Interface" unique_id=2082207489]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_top = 24.0
+offset_right = -20.0
+offset_bottom = 24.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0h1do")
+
+[node name="MissionSource" type="Label" parent="Interface/MissionPanel" unique_id=1381072894]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85490197, 0.52156866, 1)
+theme_override_font_sizes/font_size = 16
+text = "MISIÓN · ETAPA 1/5
+RESTABLECER ENERGÍA
+Asegura el sector: 2 defensores
+Apunta y pulsa E"
+autowrap_mode = 3
+
+[node name="Content" type="VBoxContainer" parent="Interface/MissionPanel" unique_id=1501043638]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Stage" type="Label" parent="Interface/MissionPanel/Content" unique_id=660898574]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9411765, 0.74509805, 0.4627451, 1)
+theme_override_font_sizes/font_size = 11
+text = "MISIÓN · ETAPA 1/5"
+
+[node name="Title" type="Label" parent="Interface/MissionPanel/Content" unique_id=1962970944]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8980392, 0.92941177, 0.95686275, 1)
+theme_override_font_sizes/font_size = 17
+text = "RESTABLECER ENERGÍA"
+autowrap_mode = 3
+
+[node name="Details" type="Label" parent="Interface/MissionPanel/Content" unique_id=324237715]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6039216, 0.67058825, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Asegura el sector: 2 defensores
+Apunta y pulsa E"
+autowrap_mode = 3
+
+[node name="CargoVitality" type="VBoxContainer" parent="Interface/MissionPanel/Content" unique_id=1251494326]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Value" type="Label" parent="Interface/MissionPanel/Content/CargoVitality" unique_id=546111553]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "INTEGRIDAD DE CARGA  150 / 150"
+
+[node name="Bar" type="ProgressBar" parent="Interface/MissionPanel/Content/CargoVitality" unique_id=440681394]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+mouse_filter = 2
+max_value = 150.0
+value = 150.0
+show_percentage = false
+
+[node name="MissionNotification" type="Label" parent="Interface" unique_id=44528336]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -440.0
+offset_top = 200.0
+offset_right = 440.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.4745098, 1, 0.827451, 1)
+theme_override_colors/font_outline_color = Color(0.03137255, 0.078431375, 0.1254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1

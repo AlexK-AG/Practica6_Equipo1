@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_sfyst"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Oculichrysalis.obj" id="2_odce7"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nw6yd"]
+size = Vector3(0.85, 1.6, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brk5f"]
+albedo_color = Color(0.45882353, 0.7294118, 1, 1)
+roughness = 0.65
+
+[node name="Enemy2" type="CharacterBody3D"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.1, -7)
+script = ExtResource("1_sfyst")
+kind = 2
+
+max_health = 100
+attack_damage = 12
+move_speed = 1.5
+
+[node name="CollisionShape3D285" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("BoxShape3D_nw6yd")
+
+[node name="MeshInstance3D286" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.3593404, 0, 0, 0, 1.2377338, 0, 0, 0, 0.90593016, 0, 0.6480242, -0.12344021)
+material_override = SubResource("StandardMaterial3D_brk5f")
+mesh = ExtResource("2_odce7")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+billboard = 1
+modulate = Color(0.45882353, 0.7294118, 1, 1)
+text = "Centinela
+100 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

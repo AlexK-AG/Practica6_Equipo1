@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_6ilil"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Cyclop.obj" id="2_1k5f2"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtqx5"]
+size = Vector3(0.85, 1.65, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2oj4"]
+albedo_color = Color(0.76862746, 1, 0.32156864, 1)
+roughness = 0.65
+
+[node name="Enemy6" type="CharacterBody3D"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1, -12)
+script = ExtResource("1_6ilil")
+kind = 6
+
+max_health = 175
+attack_damage = 20
+move_speed = 3.1
+
+[node name="CollisionShape3D301" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
+shape = SubResource("BoxShape3D_xtqx5")
+
+[node name="MeshInstance3D302" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.026606, 0, 0, 0, 0.8312443, 0, 0, 0, 0.7741268, 0, 0.85584, -0.060264654)
+material_override = SubResource("StandardMaterial3D_p2oj4")
+mesh = ExtResource("2_1k5f2")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+modulate = Color(0.76862746, 1, 0.32156864, 1)
+text = "Depredador
+175 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

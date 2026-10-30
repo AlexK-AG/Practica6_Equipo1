@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/tutorial_guide.gd" id="guide"]
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+content_margin_left = 20.0
+content_margin_top = 14.0
+content_margin_right = 20.0
+content_margin_bottom = 14.0
+bg_color = Color(0.025, 0.04, 0.07, 0.96)
+border_width_left = 3
+border_color = Color(0.56, 0.8, 0.75, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.94, 0.72, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[node name="TutorialGuide" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("guide")
+
+[node name="FocusFrame" type="Panel" parent="."]
+visible = false
+mouse_filter = 2
+theme_override_styles/panel = SubResource("focus")
+
+[node name="GuidePanel" type="PanelContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_right = 275.0
+offset_top = 130.0
+offset_bottom = 130.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Content" type="VBoxContainer" parent="GuidePanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Phase" type="Label" parent="GuidePanel/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.85, 0.75, 1)
+theme_override_font_sizes/font_size = 12
+text = "ENTRENAMIENTO / PASO 01"
+
+[node name="Title" type="Label" parent="GuidePanel/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "CONOCE TU EQUIPO"
+autowrap_mode = 3
+
+[node name="Body" type="Label" parent="GuidePanel/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.84, 0.89, 1)
+theme_override_font_sizes/font_size = 16
+text = "Cada explicación y cada práctica aparecen por separado."
+autowrap_mode = 3
+
+[node name="EnemyPreview" type="TextureRect" parent="GuidePanel/Content"]
+visible = false
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Status" type="Label" parent="GuidePanel/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.76, 0.46, 1)
+theme_override_font_sizes/font_size = 13
+text = "Pulsa Siguiente para comenzar."
+autowrap_mode = 3
+
+[node name="Actions" type="HBoxContainer" parent="GuidePanel/Content"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Leave" type="Button" parent="GuidePanel/Content/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Volver al menú"
+
+[node name="Next" type="Button" parent="GuidePanel/Content/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Siguiente"

@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_v0po0"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Oculichrysalis.obj" id="2_qx4no"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vf3sq"]
+size = Vector3(0.85, 1.9, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shdls"]
+albedo_color = Color(1, 0.6392157, 0.26666668, 1)
+roughness = 0.65
+
+[node name="Enemy8" type="CharacterBody3D"]
+process_mode = 1
+script = ExtResource("1_v0po0")
+kind = 8
+
+max_health = 140
+attack_damage = 16
+move_speed = 1.4
+
+[node name="CollisionShape3D309" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("BoxShape3D_vf3sq")
+
+[node name="MeshInstance3D310" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.3593404, 0, 0, 0, 1.4698089, 0, 0, 0, 0.90593016, 0, 0.76952875, -0.12344021)
+material_override = SubResource("StandardMaterial3D_shdls")
+mesh = ExtResource("2_qx4no")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+billboard = 1
+modulate = Color(1, 0.6392157, 0.26666668, 1)
+text = "Guardián
+140 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

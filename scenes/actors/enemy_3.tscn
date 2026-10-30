@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_8u8oi"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Cyclop.obj" id="2_pppy4"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fnold"]
+size = Vector3(0.85, 1.8, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_borct"]
+albedo_color = Color(0.9529412, 0.5294118, 0.34117648, 1)
+roughness = 0.65
+
+[node name="Enemy3" type="CharacterBody3D"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.1, -8)
+script = ExtResource("1_8u8oi")
+kind = 3
+
+max_health = 125
+attack_damage = 15
+move_speed = 2
+
+[node name="CollisionShape3D289" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("BoxShape3D_fnold")
+
+[node name="MeshInstance3D290" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.026606, 0, 0, 0, 0.90681195, 0, 0, 0, 0.7741268, 0, 0.93364364, -0.060264654)
+material_override = SubResource("StandardMaterial3D_borct")
+mesh = ExtResource("2_pppy4")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15, 0)
+billboard = 1
+modulate = Color(0.9529412, 0.5294118, 0.34117648, 1)
+text = "Asaltante
+125 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

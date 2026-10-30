@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_vr6f6"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Oculichrysalis.obj" id="2_7cj36"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_poagx"]
+size = Vector3(0.85, 2.4, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7261q"]
+albedo_color = Color(1, 0.9411765, 0.52156866, 1)
+roughness = 0.65
+
+[node name="Enemy12" type="CharacterBody3D"]
+process_mode = 1
+script = ExtResource("1_vr6f6")
+kind = 12
+
+max_health = 250
+attack_damage = 26
+move_speed = 1
+
+[node name="CollisionShape3D325" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_poagx")
+
+[node name="MeshInstance3D326" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.3593404, 0, 0, 0, 1.8566009, 0, 0, 0, 0.90593016, 0, 0.97203636, -0.12344021)
+material_override = SubResource("StandardMaterial3D_7261q")
+mesh = ExtResource("2_7cj36")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+billboard = 1
+modulate = Color(1, 0.9411765, 0.52156866, 1)
+text = "Núcleo
+250 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

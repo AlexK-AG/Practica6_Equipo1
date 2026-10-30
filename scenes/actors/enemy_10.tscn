@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_6wlx2"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Scolitex.obj" id="2_688i6"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mfn7"]
+size = Vector3(0.85, 1.6, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amjna"]
+albedo_color = Color(0.6784314, 0.5529412, 1, 1)
+roughness = 0.65
+
+[node name="Enemy10" type="CharacterBody3D"]
+process_mode = 1
+script = ExtResource("1_6wlx2")
+kind = 10
+
+max_health = 110
+attack_damage = 14
+move_speed = 3.2
+
+[node name="CollisionShape3D317" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("BoxShape3D_0mfn7")
+
+[node name="MeshInstance3D318" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33473822, 0, 0, 0, 0.559059, 0, 0, 0, 0.31891084, 0.011442685, 0.32043588, -0.2245743)
+material_override = SubResource("StandardMaterial3D_amjna")
+mesh = ExtResource("2_688i6")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+billboard = 1
+modulate = Color(0.6784314, 0.5529412, 1, 1)
+text = "Espectro
+110 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

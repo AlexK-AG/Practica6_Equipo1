@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_4p3e0"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Cyclop.obj" id="2_1n3xl"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_58dsu"]
+size = Vector3(0.85, 2.5, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqgjs"]
+albedo_color = Color(1, 0.39215687, 0.45882353, 1)
+roughness = 0.65
+
+[node name="Enemy11" type="CharacterBody3D"]
+process_mode = 1
+script = ExtResource("1_4p3e0")
+kind = 11
+
+max_health = 225
+attack_damage = 24
+move_speed = 0.8
+
+[node name="CollisionShape3D321" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_58dsu")
+
+[node name="MeshInstance3D322" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.026606, 0, 0, 0, 1.259461, 0, 0, 0, 0.7741268, 0, 1.2967273, -0.060264654)
+material_override = SubResource("StandardMaterial3D_tqgjs")
+mesh = ExtResource("2_1n3xl")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
+billboard = 1
+modulate = Color(1, 0.39215687, 0.45882353, 1)
+text = "Coloso
+225 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

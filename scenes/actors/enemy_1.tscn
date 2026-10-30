@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_r27f4"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Scolitex.obj" id="2_w823v"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtrbi"]
+size = Vector3(0.85, 1.4, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2o31s"]
+albedo_color = Color(0.92156863, 0.7764706, 0.3647059, 1)
+roughness = 0.65
+
+[node name="Enemy1" type="CharacterBody3D"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.1, -2)
+script = ExtResource("1_r27f4")
+kind = 1
+
+max_health = 75
+attack_damage = 9
+move_speed = 2.8
+
+[node name="CollisionShape3D281" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("BoxShape3D_mtrbi")
+
+[node name="MeshInstance3D282" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33473822, 0, 0, 0, 0.48917663, 0, 0, 0, 0.31891084, 0.011442685, 0.28038138, -0.2245743)
+material_override = SubResource("StandardMaterial3D_2o31s")
+mesh = ExtResource("2_w823v")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+billboard = 1
+modulate = Color(0.92156863, 0.7764706, 0.3647059, 1)
+text = "Acechador
+75 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

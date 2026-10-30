@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_406sv"]
+[ext_resource type="ArrayMesh" path="res://assets/models/enemies/Alien_Scolitex.obj" id="2_ojy0i"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_shot.wav" id="shot_audio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxnwl"]
+size = Vector3(0.85, 1.5, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtjiw"]
+albedo_color = Color(0.6862745, 1, 0.39215687, 1)
+roughness = 0.65
+
+[node name="Enemy9" type="CharacterBody3D"]
+process_mode = 1
+script = ExtResource("1_406sv")
+kind = 9
+
+max_health = 90
+attack_damage = 11
+move_speed = 3
+
+[node name="CollisionShape3D313" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_oxnwl")
+
+[node name="MeshInstance3D314" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33473822, 0, 0, 0, 0.5241178, 0, 0, 0, 0.31891084, 0.011442685, 0.30040863, -0.2245743)
+material_override = SubResource("StandardMaterial3D_jtjiw")
+mesh = ExtResource("2_ojy0i")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, 0)
+billboard = 1
+modulate = Color(0.6862745, 1, 0.39215687, 1)
+text = "Cazador
+90 PV"
+
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("shot_audio")
+volume_db = -10.0
+bus = &"Effects"
+max_polyphony = 4
+max_distance = 28.0

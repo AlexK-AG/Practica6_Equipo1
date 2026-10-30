@@ -1,0 +1,8 @@
+{
+  "name": "sector07-archivo-local",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Consulta local de los perfiles, partidas y eventos SQLite de Sector 07",
+  "engines": { "node": ">=24" },
+  "scripts": { "start": "node server.mjs", "start:open": "node server.mjs --open", "test": "node ../tests/web/web_server.mjs" }
+}

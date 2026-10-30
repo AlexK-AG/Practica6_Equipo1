@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c7t3mn8f0wvek"]
+
+[ext_resource type="Theme" uid="uid://c3vufyfwed6w8" path="res://assets/ui_theme.tres" id="theme"]
+
+[node name="UpgradeCard" type="PanelContainer" unique_id=667672227]
+custom_minimum_size = Vector2(235, 230)
+size_flags_horizontal = 3
+theme = ExtResource("theme")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=478608613]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="Margin" unique_id=245223972]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Margin/Content" unique_id=571722165]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Vitalidad"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="Margin/Content" unique_id=1675694501]
+layout_mode = 2
+size_flags_vertical = 3
+text = "+25 de vida máxima"
+autowrap_mode = 2
+
+[node name="Rank" type="Label" parent="Margin/Content" unique_id=1499669953]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Rango 0 → 1 / 3"
+
+[node name="Select" type="Button" parent="Margin/Content" unique_id=1160280293]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "ELEGIR MEJORA"

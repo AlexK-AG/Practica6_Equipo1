@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dbf2u5p7slo86"
+path="res://.godot/imported/Platform_Metal.obj-b2635fe5528803e7f844a7868cdc9ebe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Platform_Metal.obj-b2635fe5528803e7f844a7868cdc9ebe.mesh"]
+
+source_file="res://assets/models/structures/Platform_Metal.obj"
+dest_files=["res://.godot/imported/Platform_Metal.obj-b2635fe5528803e7f844a7868cdc9ebe.mesh", "res://.godot/imported/Platform_Metal.obj-b2635fe5528803e7f844a7868cdc9ebe.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

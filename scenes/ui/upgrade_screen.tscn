@@ -1,0 +1,75 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/upgrade_screen.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/upgrade_card.tscn" id="card"]
+[ext_resource type="Theme" path="res://assets/ui_theme.tres" id="theme"]
+
+[node name="UpgradeScreen" type="CanvasLayer"]
+layer = 20
+process_mode = 3
+script = ExtResource("script")
+
+[node name="Screen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+
+[node name="Shade" type="ColorRect" parent="Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.01, 0.025, 0.04, 0.97)
+
+[node name="Center" type="CenterContainer" parent="Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Screen/Center"]
+layout_mode = 2
+custom_minimum_size = Vector2(850, 365)
+
+[node name="Stack" type="VBoxContainer" parent="Screen/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="UpgradeHeading" type="Label" parent="Screen/Center/Panel/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SECTOR ASEGURADO · ELIGE UNA MEJORA"
+theme_override_font_sizes/font_size = 24
+
+[node name="UpgradeHint" type="Label" parent="Screen/Center/Panel/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Una elección por sector. Se guarda automáticamente."
+theme_override_font_sizes/font_size = 18
+
+[node name="Cards" type="HBoxContainer" parent="Screen/Center/Panel/Stack"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Card0" parent="Screen/Center/Panel/Stack/Cards" instance=ExtResource("card")]
+layout_mode = 2
+
+[node name="Card1" parent="Screen/Center/Panel/Stack/Cards" instance=ExtResource("card")]
+layout_mode = 2
+
+[node name="Card2" parent="Screen/Center/Panel/Stack/Cards" instance=ExtResource("card")]
+layout_mode = 2
+
+[node name="UpgradeBack" type="Button" parent="Screen/Center/Panel/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Volver a Inicio · elegir después"
