@@ -286,8 +286,11 @@ Las pruebas de navegador requieren Playwright y Edge únicamente para desarrollo
 
 Las licencias de los recursos y dependencias se mantienen junto a sus archivos correspondientes.
 
+### Plantillas Android y archivos .aar
 
-### Mapas de partidas y estadísticas
+Los archivos godot-lib.template_debug.aar y godot-lib.template_release.aar de android/build/libs/ no se incluyen en GitHub porque superan el límite de tamaño de archivo. Para exportar el juego a Android desde una copia del repositorio, instala en Godot las plantillas de exportación que correspondan exactamente a la versión de Godot usada por el proyecto y configura Android SDK, JDK y NDK. La plantilla Gradle personalizada de android/build/ se conserva en el repositorio.
+
+## Mapas de partidas y estadísticas
 
 La sección **Partidas y recorridos** muestra cada intento y su equipación, con un
 mapa cenital animado: trazo del jugador y movimiento de enemigos identificados por
@@ -309,10 +312,6 @@ Las misiones finales incluyen defensa del hangar durante **120 s** con una carga
 atacable de **150 PV**, refuerzos agrupados y cuatro cajas de munición (nivel 8),
 y transporte de carga desde la sala inicial hasta la última, con tres cajas de
 munición y refuerzos durante el regreso/traslado (nivel 9).
-
-#### Plantillas Android y archivos .aar
-
-Los archivos godot-lib.template_debug.aar y godot-lib.template_release.aar de android/build/libs/ no se incluyen en GitHub porque superan el límite de tamaño de archivo. Para exportar el juego a Android desde una copia del repositorio, instala en Godot las plantillas de exportación que correspondan exactamente a la versión de Godot usada por el proyecto y configura Android SDK, JDK y NDK. La plantilla Gradle personalizada de android/build/ se conserva en el repositorio.
 
 ## INTEGRANTES
 
