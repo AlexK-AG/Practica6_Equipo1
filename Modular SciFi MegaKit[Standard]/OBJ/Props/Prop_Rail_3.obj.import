@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ir4l2a23u23"
+path="res://.godot/imported/Prop_Rail_3.obj-685c81d30e63dc81a5f3d74f8dd1dfcc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Prop_Rail_3.obj-685c81d30e63dc81a5f3d74f8dd1dfcc.mesh"]
+
+source_file="res://Modular SciFi MegaKit[Standard]/OBJ/Props/Prop_Rail_3.obj"
+dest_files=["res://.godot/imported/Prop_Rail_3.obj-685c81d30e63dc81a5f3d74f8dd1dfcc.mesh", "res://.godot/imported/Prop_Rail_3.obj-685c81d30e63dc81a5f3d74f8dd1dfcc.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

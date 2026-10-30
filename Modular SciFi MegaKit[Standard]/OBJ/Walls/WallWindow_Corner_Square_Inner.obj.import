@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://q21qqe1tupht"
+path="res://.godot/imported/WallWindow_Corner_Square_Inner.obj-1e2a84f69557675340fd0e2039d06a95.mesh"
+
+[deps]
+
+files=["res://.godot/imported/WallWindow_Corner_Square_Inner.obj-1e2a84f69557675340fd0e2039d06a95.mesh"]
+
+source_file="res://Modular SciFi MegaKit[Standard]/OBJ/Walls/WallWindow_Corner_Square_Inner.obj"
+dest_files=["res://.godot/imported/WallWindow_Corner_Square_Inner.obj-1e2a84f69557675340fd0e2039d06a95.mesh", "res://.godot/imported/WallWindow_Corner_Square_Inner.obj-1e2a84f69557675340fd0e2039d06a95.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

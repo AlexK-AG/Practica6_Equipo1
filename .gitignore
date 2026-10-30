@@ -1,0 +1,69 @@
+# Godot: cache, imports generated internally and private test results.
+/.godot/
+/.import/
+
+# Historical QA captures, logs and backups managed separately.
+/revision/
+
+# Local exports/builds; keep source assets and addon binaries.
+/build/
+/builds/
+/dist/
+/exports/
+*.apk
+*.aab
+
+# Android/Gradle machine-specific and generated build output.
+/android/build/.gradle/
+/android/build/build/
+/android/build/local.properties
+/android/build/libs/debug/godot-lib.template_debug.aar
+/android/build/libs/release/godot-lib.template_release.aar
+
+# Node.js dependencies and diagnostic logs (not needed for the local server).
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Personal databases, journals, backups and damaged copies.
+*.sqlite
+*.sqlite-*
+*.sqlite.bak*
+*.sqlite.corrupt-*
+*.sqlite3
+*.sqlite3-*
+*.sqlite3.bak*
+*.sqlite3.corrupt-*
+*.db
+*.db-*
+*.db.bak*
+*.db.corrupt-*
+*.db3
+*.db3-*
+campaigns.cfg
+campaigns.cfg.bak
+
+# Local environment files; retain reusable examples.
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Export signing credentials (never commit keystore passwords or private keys).
+export_credentials.cfg
+*.keystore
+*.jks
+
+# Temporary editor/library copies; the actual SQLite DLLs stay included.
+~*.dll*
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Do not exclude .uid, resource .import files, .gdignore or addon DLLs.

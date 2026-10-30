@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://baq2trl4n88jc"
+path="res://.godot/imported/Platform_Rails_4.obj-cb55c3d244cdba28f25b918e8de6db8f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Platform_Rails_4.obj-cb55c3d244cdba28f25b918e8de6db8f.mesh"]
+
+source_file="res://Modular SciFi MegaKit[Standard]/OBJ/Platforms/Platform_Rails_4.obj"
+dest_files=["res://.godot/imported/Platform_Rails_4.obj-cb55c3d244cdba28f25b918e8de6db8f.mesh", "res://.godot/imported/Platform_Rails_4.obj-cb55c3d244cdba28f25b918e8de6db8f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

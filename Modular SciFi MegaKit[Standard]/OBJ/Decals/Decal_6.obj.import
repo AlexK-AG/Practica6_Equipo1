@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://chf4c17sajobw"
+path="res://.godot/imported/Decal_6.obj-1988bc90b71fc741c7890e11270dfd5f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Decal_6.obj-1988bc90b71fc741c7890e11270dfd5f.mesh"]
+
+source_file="res://Modular SciFi MegaKit[Standard]/OBJ/Decals/Decal_6.obj"
+dest_files=["res://.godot/imported/Decal_6.obj-1988bc90b71fc741c7890e11270dfd5f.mesh", "res://.godot/imported/Decal_6.obj-1988bc90b71fc741c7890e11270dfd5f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

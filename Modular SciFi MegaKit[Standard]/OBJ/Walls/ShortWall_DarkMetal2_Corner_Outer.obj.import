@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://n0ou5qlsp2nx"
+path="res://.godot/imported/ShortWall_DarkMetal2_Corner_Outer.obj-775889a379a961e1d17465c4f468ba4a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ShortWall_DarkMetal2_Corner_Outer.obj-775889a379a961e1d17465c4f468ba4a.mesh"]
+
+source_file="res://Modular SciFi MegaKit[Standard]/OBJ/Walls/ShortWall_DarkMetal2_Corner_Outer.obj"
+dest_files=["res://.godot/imported/ShortWall_DarkMetal2_Corner_Outer.obj-775889a379a961e1d17465c4f468ba4a.mesh", "res://.godot/imported/ShortWall_DarkMetal2_Corner_Outer.obj-775889a379a961e1d17465c4f468ba4a.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7d4cocy2nxgd"
+path="res://.godot/imported/Platform_Stairs_4WideTall.obj-153dfe91244e198e5b1a74f50237f82c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Platform_Stairs_4WideTall.obj-153dfe91244e198e5b1a74f50237f82c.mesh"]
+
+source_file="res://Modular SciFi MegaKit[Standard]/OBJ/Platforms/Platform_Stairs_4WideTall.obj"
+dest_files=["res://.godot/imported/Platform_Stairs_4WideTall.obj-153dfe91244e198e5b1a74f50237f82c.mesh", "res://.godot/imported/Platform_Stairs_4WideTall.obj-153dfe91244e198e5b1a74f50237f82c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://jtjxhdvt17xk"
+path="res://.godot/imported/Prop_ItemHolder.obj-e98f249cc65d952cbaf930bbb54aa0cd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Prop_ItemHolder.obj-e98f249cc65d952cbaf930bbb54aa0cd.mesh"]
+
+source_file="res://Modular SciFi MegaKit[Standard]/OBJ/Props/Prop_ItemHolder.obj"
+dest_files=["res://.godot/imported/Prop_ItemHolder.obj-e98f249cc65d952cbaf930bbb54aa0cd.mesh", "res://.godot/imported/Prop_ItemHolder.obj-e98f249cc65d952cbaf930bbb54aa0cd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
